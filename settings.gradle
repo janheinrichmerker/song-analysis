@@ -1,0 +1,12 @@
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "kotlin") {
+                useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
+            }
+            else if (requested.id.id == "org.junit.platform.gradle.plugin") {
+                useModule("org.junit.platform:junit-platform-gradle-plugin:${requested.version}")
+            }
+        }
+    }
+}

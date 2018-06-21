@@ -17,7 +17,7 @@ object PrintSongData {
                 println("We'll just display song information for song #0.")
             }
 
-            val song = Hdf5Song(this)
+            val song = Hdf5Song(this, 0)
             println(song)
         }
     }
