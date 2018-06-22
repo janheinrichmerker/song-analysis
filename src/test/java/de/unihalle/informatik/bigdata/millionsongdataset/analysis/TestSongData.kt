@@ -11,7 +11,7 @@ import org.junit.Assert.assertNotNull
 
 class TestSongData : Spek({
 
-    val filename = javaClass.getResource("TRADUDB128F42A61F9.h5").path
+    val filename = javaClass.getResource("data/songs/A/D/U/TRADUDB128F42A61F9.h5").path
 
     describe("a song file reader for file '$filename'") {
 

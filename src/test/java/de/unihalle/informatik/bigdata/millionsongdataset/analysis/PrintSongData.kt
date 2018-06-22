@@ -8,7 +8,7 @@ object PrintSongData {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        val filename = javaClass.getResource("TRADUDB128F42A61F9.h5").path
+        val filename = javaClass.getResource("data/songs/A/D/U/TRADUDB128F42A61F9.h5").path
         println("File: $filename")
 
         openHdf5Readonly(filename) {

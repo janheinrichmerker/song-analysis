@@ -86,12 +86,6 @@ task "runAnalyse" ("dependsOn": "classes", "type": JavaExec) {
     systemProperty("java.library.path", "lib/hdf/hdf-view/lib")
 
     doLast {
-        if (!project.hasProperty('inputPath')) {
-            throw new IllegalArgumentException("Must specify an input path to read the song data from.")
-        }
-        if (!project.hasProperty('outputPath')) {
-            throw new IllegalArgumentException("Must specify an output path to save the results to.")
-        }
-        setArgs([project.property("inputPath").toString(), project.property("outputPath").toString()])
+        setArgs(["data", "out/analytics"])
     }
 }
