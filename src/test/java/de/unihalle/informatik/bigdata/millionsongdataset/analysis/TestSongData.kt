@@ -3,47 +3,38 @@ package de.unihalle.informatik.bigdata.millionsongdataset.analysis
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.Hdf5Song
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.openHdf5Readonly
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.songsCount
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.it
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
+import org.junit.Test
 
-class TestSongData : Spek({
+object TestSongData {
 
-    val filename = javaClass.getResource("data/songs/A/D/U/TRADUDB128F42A61F9.h5").path
+    @JvmStatic
+    fun main(arguments: Array<String>) {
+        testSongFileReader()
+    }
 
-    describe("a song file reader for file '$filename'") {
+    @Test
+    fun testSongFileReader() {
+        val file = javaClass.getResource("TRADUDB128F42A61F9.h5")
+        assertNotNull("Couldn't load resource file.", file)
 
+        val filename = file.path
         openHdf5Readonly(filename) {
 
-            it("should contain 1 song") {
-                assertEquals(1, songsCount)
-            }
+            assertEquals("Hasn't loaded exactly 1 song.", 1, songsCount)
 
-            var nullableSong: Hdf5Song? = null
-            it("should load the first song") {
-                nullableSong = Hdf5Song(this@openHdf5Readonly, 0)
-                assertNotNull(nullableSong)
-            }
+            val nullableSong = Hdf5Song(this@openHdf5Readonly, 0)
+            assertNotNull("Couldn't load the first song.", nullableSong)
 
-            val song = nullableSong!! // We know the song can't be null because of the previous test.
+            val songString = nullableSong.toString()
+            println(songString)
 
-            it("should be printable") {
-                val songString = song.toString()
-                println(songString)
+            assertNotNull("Couldn't print song.", songString)
 
-                assertNotNull(songString)
-            }
+            assertEquals("Doesn't have the title 'Squarebiz'.", "Squarebiz", nullableSong.title)
 
-            it("should have the title 'Squarebiz'") {
-                assertEquals("Squarebiz", song.title)
-            }
-
-            it("should have the title 'Galactic'") {
-                assertEquals("Galactic", song.artist.name)
-            }
-
+            assertEquals("Doesn't have the title 'Galactic'.", "Galactic", nullableSong.artist.name)
         }
     }
-})
+}

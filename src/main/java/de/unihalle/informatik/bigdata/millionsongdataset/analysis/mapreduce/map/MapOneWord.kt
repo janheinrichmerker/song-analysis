@@ -1,4 +1,4 @@
-package de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce
+package de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.map
 
 import org.apache.hadoop.io.IntWritable
 import org.apache.hadoop.io.LongWritable
@@ -12,7 +12,7 @@ class MapOneWord : Mapper<LongWritable, Text, Text, IntWritable>() {
     public override fun map(
             key: LongWritable,
             value: Text,
-            context: Mapper<LongWritable, Text, Text, IntWritable>.Context) {
+            context: Context) {
         val line = value.toString()
         val tokenizer = StringTokenizer(line)
         while (tokenizer.hasMoreTokens()) {

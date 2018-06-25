@@ -1,4 +1,4 @@
-package de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce
+package de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.map
 
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.model.Song
 import org.apache.hadoop.io.IntWritable
@@ -6,11 +6,12 @@ import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.Mapper
 
 class MapOneTag : Mapper<Text, Song, Text, IntWritable>() {
-    public override fun map(
+    override fun map(
             key: Text,
             song: Song,
-            context: Mapper<Text, Song, Text, IntWritable>.Context) {
+            context: Context) {
         song.artist.mbTags.forEach {
+            println("Mapping ${it.tag} -> ${it.count}.")
             context.write(Text(it.tag), IntWritable(it.count))
         }
     }

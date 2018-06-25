@@ -1,4 +1,4 @@
-package de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce
+package de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.reduce
 
 import org.apache.hadoop.io.IntWritable
 import org.apache.hadoop.io.Text
@@ -8,7 +8,7 @@ class ReduceWordCount : Reducer<Text, IntWritable, Text, IntWritable>() {
     public override fun reduce(
             key: Text,
             values: Iterable<IntWritable>,
-            context: Reducer<Text, IntWritable, Text, IntWritable>.Context) {
+            context: Context) {
         var sum = 0
         for (value in values) {
             sum += value.get()

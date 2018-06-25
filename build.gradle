@@ -1,20 +1,25 @@
 plugins {
+    id("java")
+    id("kotlin").version("1.2.50")
+    id("application")
     id("com.github.johnrengelman.shadow").version("2.0.1")
     id("org.junit.platform.gradle.plugin").version("1.0.0")
-    id("java")
-    id("application")
-    id("kotlin").version("1.2.50")
 }
 
 ext {
-    kotlin_version = "1.2.50"
-    hadoop_version = "3.1.0"
+    kotlinVersion = "1.2.50"
+    hadoopVersion = "3.1.0"
+
+    libraryPath = "${project.rootDir}/lib"
+    hadoopLibraryPath = System.getenv("HADOOP_HOME") ?: "${libraryPath}/hadoop/hadoop-$hadoopVersion/bin"
+    hdfViewLibraryPath = "${libraryPath}/hdf/hdf-view/lib"
+    hdfJavaLibraryPath = "${libraryPath}/hdf/hdf-java/lib/libjhdf5.so"
+    // hdfLibraryPath = "$hdfJavaLibraryPath:$hdfViewLibraryPath"
+    hdfLibraryPath = hdfJavaLibraryPath
+
+    analysisInputPath = "${project.rootDir}/data/songs/A/A"
+    analysisOutputPath = "${project.rootDir}/out/analytics"
 }
-
-group = "de.unihalle.informatik.bigdata.millionsongdataset"
-version = "0.1.0"
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -24,12 +29,13 @@ repositories {
 }
 
 dependencies {
-    compile(fileTree('lib/hdf/hdf-java/lib'))
-    compile(fileTree('lib/hdf/hdf-view/lib'))
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
-    compile("org.apache.hadoop:hadoop-common:$hadoop_version")
-    compile("org.apache.hadoop:hadoop-mapreduce-client-core:$hadoop_version")
+    compile(fileTree(hdfJavaLibraryPath))
+    compile(fileTree(hdfViewLibraryPath))
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+    compile("org.apache.hadoop:hadoop-common:$hadoopVersion")
+    compile("org.apache.hadoop:hadoop-mapreduce-client-core:$hadoopVersion")
     testCompile("junit:junit:4.12")
+    testCompile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
     testCompile("org.jetbrains.spek:spek-api:1.1.5") {
         exclude("group": "org.jetbrains.kotlin")
     }
@@ -41,8 +47,13 @@ dependencies {
 configurations {
     compile.exclude("group": "org.slf4j")
     compile.exclude("group": "log4j")
-
 }
+
+group = "de.unihalle.informatik.bigdata.millionsongdataset"
+version = "0.1.0"
+mainClassName = "de.unihalle.informatik.bigdata.millionsongdataset.analysis.Analyse"
+
+sourceCompatibility = 1.8
 
 compileKotlin {
     kotlinOptions {
@@ -56,36 +67,52 @@ compileTestKotlin {
     }
 }
 
-junitPlatform {
-    filters {
-        engines {
-            include("spek")
-        }
+task "runAnalyse" ("type": Exec, "dependsOn": ["cleanRunAnalyse", "shadowJar"]) {
+    doFirst {
+        file(analysisOutputPath).deleteDir()
     }
+
+    commandLine "$hadoopLibraryPath/hadoop",
+            "fs", "-copyFromLocal",
+            hdfLibraryPath, hdfLibraryPath
+
+    commandLine "$hadoopLibraryPath/hadoop",
+            "jar", shadowJar.archivePath.path,
+            analysisInputPath,
+            analysisOutputPath,
+            hdfLibraryPath,
+            "-Dmapreduce.map.java.opts=\"-Dhdf.hdf5lib.H5.hdf5lib='$hdfLibraryPath'\"",
+            "-Dmapreduce.reduce.java.opts=\"-Dhdf.hdf5lib.H5.hdf5lib='$hdfLibraryPath'\""
+
+    outputs.dir(analysisOutputPath)
 }
 
-jar {
-    manifest {
-        attributes("Main-Class": "de.unihalle.informatik.bigdata.millionsongdataset.analysis.Analyse")
-    }
-}
 
-task "runPrintSongData" ("dependsOn": "classes", "type": JavaExec) {
+task "runPrintSongData" ("type": JavaExec, "dependsOn": "testClasses") {
     main = "de.unihalle.informatik.bigdata.millionsongdataset.analysis.PrintSongData"
     classpath = sourceSets.test.runtimeClasspath
 
     // Pass the HDF5 native library path to all Java tasks
-    systemProperty("java.library.path", "lib/hdf/hdf-view/lib")
+    systemProperty("hdf.hdf5lib.H5.hdf5lib", hdfLibraryPath)
 }
 
-task "runAnalyse" ("dependsOn": "classes", "type": JavaExec) {
-    main = "de.unihalle.informatik.bigdata.millionsongdataset.analysis.PrintSongData"
-    classpath = sourceSets.main.runtimeClasspath
+task "runTestSongData" ("type": JavaExec, "dependsOn": "testClasses") {
+    main = "de.unihalle.informatik.bigdata.millionsongdataset.analysis.TestSongData"
+    classpath = sourceSets.test.runtimeClasspath
 
     // Pass the HDF5 native library path to all Java tasks
-    systemProperty("java.library.path", "lib/hdf/hdf-view/lib")
+    systemProperty("hdf.hdf5lib.H5.hdf5lib", hdfLibraryPath)
+}
 
-    doLast {
-        setArgs(["data", "out/analytics"])
-    }
+task "runTestInputFormat" ("type": JavaExec, "dependsOn": "testClasses") {
+    main = "de.unihalle.informatik.bigdata.millionsongdataset.analysis.TestInputFormat"
+    classpath = sourceSets.test.runtimeClasspath
+
+    // Pass the HDF5 native library path to all Java tasks
+    systemProperty("hdf.hdf5lib.H5.hdf5lib", hdfLibraryPath)
+}
+
+test {
+    // Pass the HDF5 native library path to all Java tasks
+    systemProperty("hdf.hdf5lib.H5.hdf5lib", hdfLibraryPath)
 }

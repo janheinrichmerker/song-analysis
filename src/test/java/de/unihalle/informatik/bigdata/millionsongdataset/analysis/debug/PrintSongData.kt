@@ -1,4 +1,4 @@
-package de.unihalle.informatik.bigdata.millionsongdataset.analysis
+package de.unihalle.informatik.bigdata.millionsongdataset.analysis.debug
 
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.Hdf5Song
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.openHdf5Readonly

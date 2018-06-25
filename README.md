@@ -6,9 +6,13 @@ Analysing The Million Song Dataset.
 
 1. Download and install _HDF Java_ and _HDFView+Object_:  
 ```bash
-./lib/hdf/install.sh
+./lib/hdf/install-hdf.sh
 ```
-1. To download the data sets:  
+1. Download and install _Hadoop_:  
+```bash
+./lib/hadoop/install-hadoop.sh
+```
+1. Download the data sets:  
 ```bash
 ./data/download.sh
 ```

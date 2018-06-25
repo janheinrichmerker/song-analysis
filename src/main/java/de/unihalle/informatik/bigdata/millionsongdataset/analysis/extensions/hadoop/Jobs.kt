@@ -12,40 +12,38 @@ import kotlin.reflect.KClass
 
 @Throws(IOException::class)
 fun jobOf(init: Job.() -> Unit = {}): Job {
-    return Job.getInstance()
+    val job = Job.getInstance()
+    job.init()
+    return job
 }
 
 @Throws(IOException::class)
 fun jobOf(configuration: Configuration, init: Job.() -> Unit = {}): Job {
-    return Job.getInstance(configuration)
+    val job = Job.getInstance(configuration)
+    job.init()
+    return job
 }
 
 @Throws(IOException::class)
 fun jobOf(configuration: Configuration, jobName: String, init: Job.() -> Unit = {}): Job {
-    return Job.getInstance(configuration, jobName)
+    val job = Job.getInstance(configuration, jobName)
+    job.init()
+    return job
 }
 
 @Throws(IOException::class)
 fun jobOf(status: JobStatus, configuration: Configuration, init: Job.() -> Unit = {}): Job {
-    return Job.getInstance(status, configuration)
-}
-
-@Deprecated(message = "Use `jobOf()`", replaceWith = ReplaceWith("jobOf()"))
-@Throws(IOException::class)
-fun jobOf(ignored: Cluster, init: Job.() -> Unit = {}): Job {
-    return Job.getInstance(ignored)
-}
-
-@Deprecated(message = "Use `jobOf()`", replaceWith = ReplaceWith("jobOf(configuration)"))
-@Throws(IOException::class)
-fun jobOf(ignored: Cluster, configuration: Configuration, init: Job.() -> Unit = {}): Job {
-    return Job.getInstance(ignored, configuration)
+    val job = Job.getInstance(status, configuration)
+    job.init()
+    return job
 }
 
 @InterfaceAudience.Private
 @Throws(IOException::class)
 fun jobOf(ignored: Cluster, status: JobStatus, configuration: Configuration, init: Job.() -> Unit = {}): Job {
-    return Job.getInstance(ignored, status, configuration)
+    val job = Job.getInstance(ignored, status, configuration)
+    job.init()
+    return job
 }
 
 
@@ -71,6 +69,12 @@ var Job.inputPathName: String
     get() = inputPath.name
     set(value) {
         inputPath = Path(value)
+    }
+
+var Job.inputDirRecursively: Boolean
+    get() = FileInputFormat.getInputDirRecursive(this)
+    set(value) {
+        FileInputFormat.setInputDirRecursive(this, value)
     }
 
 var Job.outputPath: Path?
@@ -195,6 +199,23 @@ fun Job.setSortComparatorKClass(kClass: KClass<out RawComparator<*>>) {
 fun Job.setGroupingComparatorKClass(kClass: KClass<out RawComparator<*>>) {
     setGroupingComparatorClass(kClass.java)
 }
+
+
+var Job.minSplitSize: Long
+    get() {
+        return configuration.getLong("mapreduce.input.fileinputformat.split.minsize", 1L)
+    }
+    set(size) {
+        configuration.setLong("mapreduce.input.fileinputformat.split.minsize", size)
+    }
+
+var Job.maxSplitSize: Long
+    get() {
+        return configuration.getLong("mapreduce.input.fileinputformat.split.maxsize", 9223372036854775807L)
+    }
+    set(size) {
+        configuration.setLong("mapreduce.input.fileinputformat.split.maxsize", size)
+    }
 
 
 @Throws(IOException::class, InterruptedException::class, ClassNotFoundException::class)

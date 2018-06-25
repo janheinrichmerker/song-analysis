@@ -1,104 +1,266 @@
 package de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5
 
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.generateArray
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.hadoop.*
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.model.Song
 import hdf.`object`.h5.H5File
+import org.apache.hadoop.io.WritableComparable
+import java.io.DataInput
+import java.io.DataOutput
+import kotlin.properties.Delegates
 
-class Hdf5Song(private val file: H5File, private val songIndex: Int = 0) : Song {
+class Hdf5Song() : Song, WritableComparable<Hdf5Song> {
 
-    private val _artistFamiliarity: Double = file.getArtistFamiliarity(songIndex)
-    private val _artistHotttnesss: Double = file.getArtistHotttnesss(songIndex)
-    private val _artistId: String = file.getArtistId(songIndex)
-    private val _artistMbId: String = file.getArtistMbId(songIndex)
-    private val _artistPlaymeId: Int = file.getArtistPlaymeId(songIndex)
-    private val _artist7DigitalId: Int = file.getArtist7DigitalId(songIndex)
-    private val _artistLatitude: Double = file.getArtistLatitude(songIndex)
-    private val _artistLongitude: Double = file.getArtistLongitude(songIndex)
-    private val _artistLocation: String = file.getArtistLocation(songIndex)
-    private val _artistName: String = file.getArtistName(songIndex)
-    private val _release: String = file.getRelease(songIndex)
-    private val _release7DigitalId: Int = file.getRelease7DigitalId(songIndex)
-    private val _songId: String = file.getSongId(songIndex)
-    private val _songHotttnesss: Double = file.getSongHotttnesss(songIndex)
-    private val _title: String = file.getTitle(songIndex)
-    private val _track7DigitalId: Int = file.getTrack7DigitalId(songIndex)
-    private val _similarArtists: Array<String> = file.getSimilarArtists(songIndex)
-    private val _artistTerms: Array<String> = file.getArtistTerms(songIndex)
-    private val _artistTermsFrequency: DoubleArray? = file.getArtistTermsFrequency(songIndex)
-    private val _artistTermsWeight: DoubleArray? = file.getArtistTermsWeight(songIndex)
-    private val _analysisSampleRate: Double = 0.0 //file.getAnalysisSampleRate(songIndex)
-    private val _audioMd5: String = file.getAudioMd5(songIndex)
-    private val _danceability: Double = file.getDanceability(songIndex)
-    private val _duration: Double = file.getDuration(songIndex)
-    private val _fadeInEnd: Double = file.getFadeInEnd(songIndex)
-    private val _energy: Double = file.getEnergy(songIndex)
-    private val _key: Int = file.getKey(songIndex)
-    private val _keyConfidence: Double = file.getKeyConfidence(songIndex)
-    private val _loudness: Double = file.getLoudness(songIndex)
-    private val _mode: Int = file.getMode(songIndex)
-    private val _modeConfidence: Double = file.getModeConfidence(songIndex)
-    private val _fadeOutStart: Double = file.getFadeOutStart(songIndex)
-    private val _tempo: Double = file.getTempo(songIndex)
-    private val _timeSignature: Int = file.getTimeSignature(songIndex)
-    private val _timeSignatureConfidence: Double = file.getTimeSignatureConfidence(songIndex)
-    private val _trackId: String = file.getTrackId(songIndex)
-    private val _segmentsStart: DoubleArray? = file.getSegmentsStart(songIndex)
-    private val _segmentsConfidence: DoubleArray? = file.getSegmentsConfidence(songIndex)
-    private val _segmentsPitches: DoubleArray? = file.getSegmentsPitches(songIndex)
-    private val _segmentsTimbre: DoubleArray? = file.getSegmentsTimbre(songIndex)
-    private val _segmentsLoudnessMax: DoubleArray? = file.getSegmentsLoudnessMax(songIndex)
-    private val _segmentsLoudnessMaxTime: DoubleArray? = file.getSegmentsLoudnessMaxTime(songIndex)
-    private val _segmentsLoudnessStart: DoubleArray? = file.getSegmentsLoudnessStart(songIndex)
-    private val _sectionsStart: DoubleArray? = file.getSectionsStart(songIndex)
-    private val _sectionsConfidence: DoubleArray? = file.getSectionsConfidence(songIndex)
-    private val _beatsStart: DoubleArray? = file.getBeatsStart(songIndex)
-    private val _beatsConfidence: DoubleArray? = file.getBeatsConfidence(songIndex)
-    private val _barsStart: DoubleArray? = file.getBarsStart(songIndex)
-    private val _barsConfidence: DoubleArray? = file.getBarsConfidence(songIndex)
-    private val _tatumsStart: DoubleArray? = file.getTatumsStart(songIndex)
-    private val _tatumsConfidence: DoubleArray? = file.getTatumsConfidence(songIndex)
-    private val _year: Int = file.getYear(songIndex)
-    private val _artistMbTags: Array<String> = file.getArtistMbTags(songIndex)
-    private val _artistMbTagsCount: IntArray = file.getArtistMbTagsCount(songIndex)
+    private var _artistFamiliarity: Double by Delegates.notNull()
+    private var _artistHotttnesss: Double by Delegates.notNull()
+    private var _artistId: String by Delegates.notNull()
+    private var _artistMbId: String by Delegates.notNull()
+    private var _artistPlaymeId: Int by Delegates.notNull()
+    private var _artist7DigitalId: Int by Delegates.notNull()
+    private var _artistLatitude: Double by Delegates.notNull()
+    private var _artistLongitude: Double by Delegates.notNull()
+    private var _artistLocation: String by Delegates.notNull()
+    private var _artistName: String by Delegates.notNull()
+    private var _release: String by Delegates.notNull()
+    private var _release7DigitalId: Int by Delegates.notNull()
+    private var _songId: String by Delegates.notNull()
+    private var _songHotttnesss: Double by Delegates.notNull()
+    private var _title: String by Delegates.notNull()
+    private var _track7DigitalId: Int by Delegates.notNull()
+    private var _similarArtists: Array<String> by Delegates.notNull()
+    private var _artistTerms: Array<String> by Delegates.notNull()
+    private var _artistTermsFrequency: DoubleArray by Delegates.notNull()
+    private var _artistTermsWeight: DoubleArray by Delegates.notNull()
+    private var _analysisSampleRate: Double by Delegates.notNull()
+    private var _audioMd5: String by Delegates.notNull()
+    private var _danceability: Double by Delegates.notNull()
+    private var _duration: Double by Delegates.notNull()
+    private var _fadeInEnd: Double by Delegates.notNull()
+    private var _energy: Double by Delegates.notNull()
+    private var _key: Int by Delegates.notNull()
+    private var _keyConfidence: Double by Delegates.notNull()
+    private var _loudness: Double by Delegates.notNull()
+    private var _mode: Int by Delegates.notNull()
+    private var _modeConfidence: Double by Delegates.notNull()
+    private var _fadeOutStart: Double by Delegates.notNull()
+    private var _tempo: Double by Delegates.notNull()
+    private var _timeSignature: Int by Delegates.notNull()
+    private var _timeSignatureConfidence: Double by Delegates.notNull()
+    private var _trackId: String by Delegates.notNull()
+    private var _segmentsStart: DoubleArray by Delegates.notNull()
+    private var _segmentsConfidence: DoubleArray by Delegates.notNull()
+    private var _segmentsPitches: DoubleArray by Delegates.notNull()
+    private var _segmentsTimbre: DoubleArray by Delegates.notNull()
+    private var _segmentsLoudnessMax: DoubleArray by Delegates.notNull()
+    private var _segmentsLoudnessMaxTime: DoubleArray by Delegates.notNull()
+    private var _segmentsLoudnessStart: DoubleArray by Delegates.notNull()
+    private var _sectionsStart: DoubleArray by Delegates.notNull()
+    private var _sectionsConfidence: DoubleArray by Delegates.notNull()
+    private var _beatsStart: DoubleArray by Delegates.notNull()
+    private var _beatsConfidence: DoubleArray by Delegates.notNull()
+    private var _barsStart: DoubleArray by Delegates.notNull()
+    private var _barsConfidence: DoubleArray by Delegates.notNull()
+    private var _tatumsStart: DoubleArray by Delegates.notNull()
+    private var _tatumsConfidence: DoubleArray by Delegates.notNull()
+    private var _year: Int by Delegates.notNull()
+    private var _artistMbTags: Array<String> by Delegates.notNull()
+    private var _artistMbTagsCount: IntArray by Delegates.notNull()
 
-    override val artist = Hdf5Artist()
-    override val release = Hdf5Release()
-    override val id = _songId
-    override val hotttnesss = _songHotttnesss
-    override val title = _title
-    override val analysisSampleRate = _analysisSampleRate
-    override val audioMd5 = _audioMd5
-    override val danceability = _danceability
-    override val duration = _duration
-    override val fades = Hdf5Fades()
-    override val energy = _energy
-    override val key = Hdf5Key()
-    override val loudness = _loudness
-    override val mode = Hdf5Mode()
-    override val tempo = _tempo
-    override val timeSignature = Hdf5TimeSignature()
-    override val track = Hdf5Track()
-    override val segments = if (_segmentsStart == null) null
-    else generateArray(_segmentsStart.size) { index ->
-        Hdf5Segment(index) as Song.Segment
+    constructor(file: H5File, songIndex: Int = 0) : this() {
+        _artistFamiliarity = file.getArtistFamiliarity(songIndex)
+        _artistHotttnesss = file.getArtistHotttnesss(songIndex)
+        _artistId = file.getArtistId(songIndex)
+        _artistMbId = file.getArtistMbId(songIndex)
+        _artistPlaymeId = file.getArtistPlaymeId(songIndex)
+        _artist7DigitalId = file.getArtist7DigitalId(songIndex)
+        _artistLatitude = file.getArtistLatitude(songIndex)
+        _artistLongitude = file.getArtistLongitude(songIndex)
+        _artistLocation = file.getArtistLocation(songIndex)
+        _artistName = file.getArtistName(songIndex)
+        _release = file.getRelease(songIndex)
+        _release7DigitalId = file.getRelease7DigitalId(songIndex)
+        _songId = file.getSongId(songIndex)
+        _songHotttnesss = file.getSongHotttnesss(songIndex)
+        _title = file.getTitle(songIndex)
+        _track7DigitalId = file.getTrack7DigitalId(songIndex)
+        _similarArtists = file.getSimilarArtists(songIndex)
+        _artistTerms = file.getArtistTerms(songIndex)
+        _artistTermsFrequency = file.getArtistTermsFrequency(songIndex) ?: DoubleArray(0)
+        _artistTermsWeight = file.getArtistTermsWeight(songIndex) ?: DoubleArray(0)
+        _analysisSampleRate = 0.0 //file.getAnalysisSampleRate(songIndex)
+        _audioMd5 = file.getAudioMd5(songIndex)
+        _danceability = file.getDanceability(songIndex)
+        _duration = file.getDuration(songIndex)
+        _fadeInEnd = file.getFadeInEnd(songIndex)
+        _energy = file.getEnergy(songIndex)
+        _key = file.getKey(songIndex)
+        _keyConfidence = file.getKeyConfidence(songIndex)
+        _loudness = file.getLoudness(songIndex)
+        _mode = file.getMode(songIndex)
+        _modeConfidence = file.getModeConfidence(songIndex)
+        _fadeOutStart = file.getFadeOutStart(songIndex)
+        _tempo = file.getTempo(songIndex)
+        _timeSignature = file.getTimeSignature(songIndex)
+        _timeSignatureConfidence = file.getTimeSignatureConfidence(songIndex)
+        _trackId = file.getTrackId(songIndex)
+        _segmentsStart = file.getSegmentsStart(songIndex) ?: DoubleArray(0)
+        _segmentsConfidence = file.getSegmentsConfidence(songIndex) ?: DoubleArray(0)
+        _segmentsPitches = file.getSegmentsPitches(songIndex) ?: DoubleArray(0)
+        _segmentsTimbre = file.getSegmentsTimbre(songIndex) ?: DoubleArray(0)
+        _segmentsLoudnessMax = file.getSegmentsLoudnessMax(songIndex) ?: DoubleArray(0)
+        _segmentsLoudnessMaxTime = file.getSegmentsLoudnessMaxTime(songIndex) ?: DoubleArray(0)
+        _segmentsLoudnessStart = file.getSegmentsLoudnessStart(songIndex) ?: DoubleArray(0)
+        _sectionsStart = file.getSectionsStart(songIndex) ?: DoubleArray(0)
+        _sectionsConfidence = file.getSectionsConfidence(songIndex) ?: DoubleArray(0)
+        _beatsStart = file.getBeatsStart(songIndex) ?: DoubleArray(0)
+        _beatsConfidence = file.getBeatsConfidence(songIndex) ?: DoubleArray(0)
+        _barsStart = file.getBarsStart(songIndex) ?: DoubleArray(0)
+        _barsConfidence = file.getBarsConfidence(songIndex) ?: DoubleArray(0)
+        _tatumsStart = file.getTatumsStart(songIndex) ?: DoubleArray(0)
+        _tatumsConfidence = file.getTatumsConfidence(songIndex) ?: DoubleArray(0)
+        _year = file.getYear(songIndex)
+        _artistMbTags = file.getArtistMbTags(songIndex)
+        _artistMbTagsCount = file.getArtistMbTagsCount(songIndex)
     }
-    override val sections = if (_sectionsStart == null) null
-    else generateArray(_sectionsStart.size) { index ->
-        Hdf5Section(index) as Song.Section
+
+    override fun readFields(input: DataInput) {
+        _artistFamiliarity = input.readDouble()
+        _artistHotttnesss = input.readDouble()
+        _artistId = input.readUTF()
+        _artistMbId = input.readUTF()
+        _artistPlaymeId = input.readInt()
+        _artist7DigitalId = input.readInt()
+        _artistLatitude = input.readDouble()
+        _artistLongitude = input.readDouble()
+        _artistLocation = input.readUTF()
+        _artistName = input.readUTF()
+        _release = input.readUTF()
+        _release7DigitalId = input.readInt()
+        _songId = input.readUTF()
+        _songHotttnesss = input.readDouble()
+        _title = input.readUTF()
+        _track7DigitalId = input.readInt()
+        _similarArtists = input.readUTFArray()
+        _artistTerms = input.readUTFArray()
+        _artistTermsFrequency = input.readDoubleArray()
+        _artistTermsWeight = input.readDoubleArray()
+        _analysisSampleRate = input.readDouble()
+        _audioMd5 = input.readUTF()
+        _danceability = input.readDouble()
+        _duration = input.readDouble()
+        _fadeInEnd = input.readDouble()
+        _energy = input.readDouble()
+        _key = input.readInt()
+        _keyConfidence = input.readDouble()
+        _loudness = input.readDouble()
+        _mode = input.readInt()
+        _modeConfidence = input.readDouble()
+        _fadeOutStart = input.readDouble()
+        _tempo = input.readDouble()
+        _timeSignature = input.readInt()
+        _timeSignatureConfidence = input.readDouble()
+        _trackId = input.readUTF()
+        _segmentsStart = input.readDoubleArray()
+        _segmentsConfidence = input.readDoubleArray()
+        _segmentsPitches = input.readDoubleArray()
+        _segmentsTimbre = input.readDoubleArray()
+        _segmentsLoudnessMax = input.readDoubleArray()
+        _segmentsLoudnessMaxTime = input.readDoubleArray()
+        _segmentsLoudnessStart = input.readDoubleArray()
+        _sectionsStart = input.readDoubleArray()
+        _sectionsConfidence = input.readDoubleArray()
+        _beatsStart = input.readDoubleArray()
+        _beatsConfidence = input.readDoubleArray()
+        _barsStart = input.readDoubleArray()
+        _barsConfidence = input.readDoubleArray()
+        _tatumsStart = input.readDoubleArray()
+        _tatumsConfidence = input.readDoubleArray()
+        _year = input.readInt()
+        _artistMbTags = input.readUTFArray()
+        _artistMbTagsCount = input.readIntArray()
     }
-    override val beats = if (_beatsStart == null) null
-    else generateArray(_beatsStart.size) { index ->
-        Hdf5Beat(index) as Song.Beat
+
+    override fun compareTo(other: Hdf5Song) = artist.id.compareTo(other.artist.id, ignoreCase = true)
+
+    override fun write(output: DataOutput) {
+        output.writeDouble(_artistFamiliarity)
+        output.writeDouble(_artistHotttnesss)
+        output.writeUTF(_artistId)
+        output.writeUTF(_artistMbId)
+        output.writeInt(_artistPlaymeId)
+        output.writeInt(_artist7DigitalId)
+        output.writeDouble(_artistLatitude)
+        output.writeDouble(_artistLongitude)
+        output.writeUTF(_artistLocation)
+        output.writeUTF(_artistName)
+        output.writeUTF(_release)
+        output.writeInt(_release7DigitalId)
+        output.writeUTF(_songId)
+        output.writeDouble(_songHotttnesss)
+        output.writeUTF(_title)
+        output.writeInt(_track7DigitalId)
+        output.writeUTFArray(_similarArtists)
+        output.writeUTFArray(_artistTerms)
+        output.writeDoubleArray(_artistTermsFrequency)
+        output.writeDoubleArray(_artistTermsWeight)
+        output.writeDouble(_analysisSampleRate)
+        output.writeUTF(_audioMd5)
+        output.writeDouble(_danceability)
+        output.writeDouble(_duration)
+        output.writeDouble(_fadeInEnd)
+        output.writeDouble(_energy)
+        output.writeInt(_key)
+        output.writeDouble(_keyConfidence)
+        output.writeDouble(_loudness)
+        output.writeInt(_mode)
+        output.writeDouble(_modeConfidence)
+        output.writeDouble(_fadeOutStart)
+        output.writeDouble(_tempo)
+        output.writeInt(_timeSignature)
+        output.writeDouble(_timeSignatureConfidence)
+        output.writeUTF(_trackId)
+        output.writeDoubleArray(_segmentsStart)
+        output.writeDoubleArray(_segmentsConfidence)
+        output.writeDoubleArray(_segmentsPitches)
+        output.writeDoubleArray(_segmentsTimbre)
+        output.writeDoubleArray(_segmentsLoudnessMax)
+        output.writeDoubleArray(_segmentsLoudnessMaxTime)
+        output.writeDoubleArray(_segmentsLoudnessStart)
+        output.writeDoubleArray(_sectionsStart)
+        output.writeDoubleArray(_sectionsConfidence)
+        output.writeDoubleArray(_beatsStart)
+        output.writeDoubleArray(_beatsConfidence)
+        output.writeDoubleArray(_barsStart)
+        output.writeDoubleArray(_barsConfidence)
+        output.writeDoubleArray(_tatumsStart)
+        output.writeDoubleArray(_tatumsConfidence)
+        output.writeInt(_year)
+        output.writeUTFArray(_artistMbTags)
+        output.writeIntArray(_artistMbTagsCount)
     }
-    override val bars = if (_barsStart == null) null
-    else generateArray(_barsStart.size) { index ->
-        Hdf5Bar(index) as Song.Bar
-    }
-    override val tatums = if (_tatumsStart == null) null
-    else generateArray(_tatumsStart.size) { index ->
-        Hdf5Tatum(index) as Song.Tatum
-    }
-    override val year = _year
+
+    override val artist by lazy { Hdf5Artist() }
+    override val release by lazy { Hdf5Release() }
+    override val id by lazy { _songId }
+    override val hotttnesss by lazy { _songHotttnesss }
+    override val title by lazy { _title }
+    override val analysisSampleRate by lazy { _analysisSampleRate }
+    override val audioMd5 by lazy { _audioMd5 }
+    override val danceability by lazy { _danceability }
+    override val duration by lazy { _duration }
+    override val fades by lazy { Hdf5Fades() }
+    override val energy by lazy { _energy }
+    override val key by lazy { Hdf5Key() }
+    override val loudness by lazy { _loudness }
+    override val mode by lazy { Hdf5Mode() }
+    override val tempo by lazy { _tempo }
+    override val timeSignature by lazy { Hdf5TimeSignature() }
+    override val track by lazy { Hdf5Track() }
+    override val segments by lazy { Array<Song.Segment>(_segmentsStart.size) { Hdf5Segment(it) } }
+    override val sections by lazy { Array<Song.Section>(_sectionsStart.size) { Hdf5Section(it) } }
+    override val beats by lazy { Array<Song.Beat>(_beatsStart.size) { Hdf5Beat(it) } }
+    override val bars by lazy { Array<Song.Bar>(_barsStart.size) { Hdf5Bar(it) } }
+    override val tatums by lazy { Array<Song.Tatum>(_tatumsStart.size) { Hdf5Tatum(it) } }
+    override val year by lazy { _year }
 
     inner class Hdf5Fades : Song.Fades {
         override val fadeInEnd = _fadeInEnd
@@ -181,12 +343,8 @@ Release: $release
         override val familiarity = _artistFamiliarity
         override val hotttnesss = _artistHotttnesss
         override val location = Hdf5Location()
-        override val mbTags = generateArray(_artistMbTags.size) { index ->
-            Hdf5MbTag(index) as Song.Artist.MbTag
-        }
-        override val terms = generateArray(_artistTerms.size) { index ->
-            Hdf5Terms(index) as Song.Artist.Terms
-        }
+        override val mbTags = Array<Song.Artist.MbTag>(_artistMbTags.size) { Hdf5MbTag(it) }
+        override val terms = Array<Song.Artist.Terms>(_artistTerms.size) { Hdf5Terms(it) }
         override val similar = _similarArtists
 
         inner class Hdf5MbTag(index: Int) : Song.Artist.MbTag {
@@ -203,8 +361,8 @@ Count: $count
 
         inner class Hdf5Terms(index: Int) : Song.Artist.Terms {
             override val terms = _artistTerms[index]
-            override val frequency = _artistTermsFrequency!![index]
-            override val weight = _artistTermsWeight!![index]
+            override val frequency = _artistTermsFrequency[index]
+            override val weight = _artistTermsWeight[index]
 
             override fun toString(): String {
                 return """
@@ -247,8 +405,8 @@ Similar artists: ${"\n"}${similar.joinToString(separator = "\n", limit = 10).pre
     }
 
     inner class Hdf5Section(index: Int) : Song.Section {
-        override val start = _sectionsStart!![index]
-        override val confidence = _sectionsConfidence!![index]
+        override val start = _sectionsStart[index]
+        override val confidence = _sectionsConfidence[index]
 
         override fun toString(): String {
             return """
@@ -259,8 +417,8 @@ Confidence: $confidence
     }
 
     inner class Hdf5Beat(index: Int) : Song.Beat {
-        override val start = _beatsStart!![index]
-        override val confidence = _beatsConfidence!![index]
+        override val start = _beatsStart[index]
+        override val confidence = _beatsConfidence[index]
 
         override fun toString(): String {
             return """
@@ -271,8 +429,8 @@ Confidence: $confidence
     }
 
     inner class Hdf5Bar(index: Int) : Song.Bar {
-        override val start = _barsStart!![index]
-        override val confidence = _barsConfidence!![index]
+        override val start = _barsStart[index]
+        override val confidence = _barsConfidence[index]
 
         override fun toString(): String {
             return """
@@ -283,8 +441,8 @@ Confidence: $confidence
     }
 
     inner class Hdf5Tatum(index: Int) : Song.Tatum {
-        override val start = _tatumsStart!![index]
-        override val confidence = _tatumsConfidence!![index]
+        override val start = _tatumsStart[index]
+        override val confidence = _tatumsConfidence[index]
 
         override fun toString(): String {
             return """
@@ -295,16 +453,16 @@ Confidence: $confidence
     }
 
     inner class Hdf5Segment(index: Int) : Song.Segment {
-        override val start = _segmentsStart!![index]
-        override val confidence = _segmentsConfidence!![index]
-        override val pitch = _segmentsPitches!![index]
-        override val timbre = _segmentsTimbre!![index]
+        override val start = _segmentsStart[index]
+        override val confidence = _segmentsConfidence[index]
+        override val pitch = _segmentsPitches[index]
+        override val timbre = _segmentsTimbre[index]
         override val loudness = Hdf5Loudness(index)
 
         inner class Hdf5Loudness(index: Int) : Song.Segment.Loudness {
-            override val max = _segmentsLoudnessMax!![index]
-            override val maxTime = _segmentsLoudnessMaxTime!![index]
-            override val start = _segmentsLoudnessStart!![index]
+            override val max = _segmentsLoudnessMax[index]
+            override val maxTime = _segmentsLoudnessMaxTime[index]
+            override val start = _segmentsLoudnessStart[index]
 
             override fun toString(): String {
                 return """
@@ -345,11 +503,11 @@ Loudness: $loudness
 Mode: ${"\n"}${mode.toString().prependIndent()}
 Tempo: $tempo
 Time signature: ${"\n"}${timeSignature.toString().prependIndent()}
-Segments: ${"\n"}${segments?.joinToString(separator = "\n", limit = 10)?.prependIndent()}
-Sections: ${"\n"}${sections?.joinToString(separator = "\n", limit = 10)?.prependIndent()}
-Beats: ${"\n"}${beats?.joinToString(separator = "\n", limit = 10)?.prependIndent()}
-Bars: ${"\n"}${bars?.joinToString(separator = "\n", limit = 10)?.prependIndent()}
-Tatums: ${"\n"}${tatums?.joinToString(separator = "\n", limit = 10)?.prependIndent()}
+Segments: ${"\n"}${segments.joinToString(separator = "\n", limit = 10).prependIndent()}
+Sections: ${"\n"}${sections.joinToString(separator = "\n", limit = 10).prependIndent()}
+Beats: ${"\n"}${beats.joinToString(separator = "\n", limit = 10).prependIndent()}
+Bars: ${"\n"}${bars.joinToString(separator = "\n", limit = 10).prependIndent()}
+Tatums: ${"\n"}${tatums.joinToString(separator = "\n", limit = 10).prependIndent()}
 Year: $year
 """.trim()
     }
