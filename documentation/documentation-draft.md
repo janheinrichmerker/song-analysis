@@ -2,7 +2,8 @@
 
 ## Einleitung
 
-,,Wie viele Daten braucht man, damit wir es 'Big Data' nennen können?" ,,Eine Million sollten doch reichen, oder?"
+> Wie viele Daten braucht man, damit wir es 'Big Data' nennen können?  
+> Eine Million sollten doch reichen, oder?
 
 Die Aufgabe ist, auf einem möglichst nicht unter 10.000 Datenpunkten großen Datensatz eine (oder nach belieben mehrere) Problemstellung(en) zu lösen.
 
