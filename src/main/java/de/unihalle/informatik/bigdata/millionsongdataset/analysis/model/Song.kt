@@ -1,13 +1,18 @@
 package de.unihalle.informatik.bigdata.millionsongdataset.analysis.model
 
-interface Song {
+import org.apache.hadoop.io.WritableComparable
+
+interface Song : WritableComparable<Song> {
 
     val artist: Artist
     val release: Release
     val id: String
     val hotttnesss: Double
     val title: String
-    val analysisSampleRate: Double
+    /**
+     * Sample rate of the audio used for the song analysis.
+     */
+    val analysisSampleRate: Int
     val audioMd5: String
     val danceability: Double
     val duration: Double
@@ -61,8 +66,8 @@ interface Song {
         val name: String
         val id: String
         val mbId: String
-        val playmeId: Int
-        val sevenDigitalId: Int
+        val playmeId: Int?
+        val sevenDigitalId: Int?
         val familiarity: Double
         val hotttnesss: Double
         val location: Location

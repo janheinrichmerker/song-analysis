@@ -72,17 +72,20 @@ task "runAnalyse" ("type": Exec, "dependsOn": ["cleanRunAnalyse", "shadowJar"]) 
         file(analysisOutputPath).deleteDir()
     }
 
+    commandLine "export HADOOP_ROOT_LOGGER=\"WARN,console\""
+
     commandLine "$hadoopLibraryPath/hadoop",
             "fs", "-copyFromLocal",
             hdfLibraryPath, hdfLibraryPath
 
     commandLine "$hadoopLibraryPath/hadoop",
             "jar", shadowJar.archivePath.path,
+            "-Dmapreduce.map.java.opts=-Dhdf.hdf5lib.H5.hdf5lib=$hdfLibraryPath",
+            "-Dmapreduce.reduce.java.opts=-Dhdf.hdf5lib.H5.hdf5lib=$hdfLibraryPath",
+            "-Dhdf.hdf5lib.H5.hdf5lib=$hdfLibraryPath",
+            "-Dhadoop.root.logger=WARN,DRFA",
             analysisInputPath,
-            analysisOutputPath,
-            hdfLibraryPath,
-            "-Dmapreduce.map.java.opts=\"-Dhdf.hdf5lib.H5.hdf5lib='$hdfLibraryPath'\"",
-            "-Dmapreduce.reduce.java.opts=\"-Dhdf.hdf5lib.H5.hdf5lib='$hdfLibraryPath'\""
+            analysisOutputPath
 
     outputs.dir(analysisOutputPath)
 }

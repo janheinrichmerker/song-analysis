@@ -1,8 +1,7 @@
 package de.unihalle.informatik.bigdata.millionsongdataset.analysis
 
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.Hdf5Song
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.openHdf5Readonly
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.songsCount
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.hdf5.openHdf5File
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.hdf5.songs
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test
@@ -20,21 +19,19 @@ object TestSongData {
         assertNotNull("Couldn't load resource file.", file)
 
         val filename = file.path
-        openHdf5Readonly(filename) {
+        openHdf5File(filename) {
 
-            assertEquals("Hasn't loaded exactly 1 song.", 1, songsCount)
+            val songs = songs
+            assertEquals("Hasn't loaded exactly 1 song.", 1, songs.size)
 
-            val nullableSong = Hdf5Song(this@openHdf5Readonly, 0)
-            assertNotNull("Couldn't load the first song.", nullableSong)
+            val song = songs.first()
 
-            val songString = nullableSong.toString()
+            val songString = song.toString()
+            assertNotNull("Couldn't print song.", songString)
             println(songString)
 
-            assertNotNull("Couldn't print song.", songString)
-
-            assertEquals("Doesn't have the title 'Squarebiz'.", "Squarebiz", nullableSong.title)
-
-            assertEquals("Doesn't have the title 'Galactic'.", "Galactic", nullableSong.artist.name)
+            assertEquals("Doesn't have the title 'Squarebiz'.", "Squarebiz", song.title)
+            assertEquals("Doesn't have the title 'Galactic'.", "Galactic", song.artist.name)
         }
     }
 }

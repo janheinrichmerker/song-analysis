@@ -1,9 +1,8 @@
 package de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.reader.hdf5
 
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.hadoop.absolutePath
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.Hdf5Song
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.openHdf5Readonly
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.songsCount
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.hdf5.openHdf5File
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.hdf5.songs
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.model.Song
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.io.Text
@@ -30,12 +29,16 @@ class Hdf5SongFileRecordReader : RecordReader<Text, Song>() {
     @Throws(IOException::class)
     override fun nextKeyValue(): Boolean {
         if (!processed) {
-            openHdf5Readonly(fileSplit.path.absolutePath) {
-                if (songsCount > 1) {
+            openHdf5File(fileSplit.path.absolutePath) {
+                val songs = songs
+                if (songs.size > 1) {
                     println("Note that we'll just parse song information for the first song in each file.")
                 }
 
-                val song = Hdf5Song(this, 0)
+                val song = songs[0]
+
+                // TODO Parse all songs in a track file.
+
                 key = Text(song.track.id)
                 value = song
 

@@ -1,8 +1,7 @@
 package de.unihalle.informatik.bigdata.millionsongdataset.analysis.speks
 
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.Hdf5Song
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.openHdf5Readonly
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hdf5.songsCount
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.hdf5.openHdf5File
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.hdf5.songs
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it
@@ -22,25 +21,18 @@ object SongDataSpek : Spek({
         describe(" for file '$filename'") {
 
 
-            openHdf5Readonly(filename) {
+            openHdf5File(filename) {
+                val songs = songs
 
                 it("should contain 1 song") {
-                    assertEquals(1, songsCount)
+                    assertEquals(1, songs.size)
                 }
 
-                var nullableSong: Hdf5Song? = null
-                it("should load the first song") {
-                    nullableSong = Hdf5Song(this@openHdf5Readonly, 0)
-                    assertNotNull(nullableSong)
-                }
-
-                val song = nullableSong!! // We know the song can't be null because of the previous test.
-
+                val song = songs.first()
                 it("should be printable") {
                     val songString = song.toString()
-                    println(songString)
-
                     assertNotNull(songString)
+                    println(songString)
                 }
 
                 it("should have the title 'Squarebiz'") {
