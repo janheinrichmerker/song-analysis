@@ -17,7 +17,7 @@ ext {
     // hdfLibraryPath = "$hdfJavaLibraryPath:$hdfViewLibraryPath"
     hdfLibraryPath = hdfJavaLibraryPath
 
-    analysisInputPath = "${project.rootDir}/data/songs/A/A"
+    analysisInputPath = "${project.rootDir}/data/songs/A/A/A"
     analysisOutputPath = "${project.rootDir}/out/analytics"
 }
 
@@ -88,6 +88,7 @@ task "runAnalyse" ("type": Exec, "dependsOn": ["cleanRunAnalyse", "shadowJar"]) 
             analysisOutputPath
 
     outputs.dir(analysisOutputPath)
+    outputs.upToDateWhen { false }
 }
 
 

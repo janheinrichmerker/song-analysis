@@ -1,3 +1,5 @@
+package de.unihalle.informatik.bigdata.millionsongdataset.analysis.heatmap;
+
 import java.util.Random;
 
 public class ArtistLocation {

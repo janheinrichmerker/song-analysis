@@ -87,4 +87,5 @@ modules.xml
 .idea/misc.xml
 
 # End of https://www.gitignore.io/api/intellij+all,apachehadoop
-/hs_err_pid*.log
+hs_err_pid*.log
+libjhdf5.so

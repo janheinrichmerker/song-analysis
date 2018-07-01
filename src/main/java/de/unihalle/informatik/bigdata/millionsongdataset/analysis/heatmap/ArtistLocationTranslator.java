@@ -1,4 +1,9 @@
-import java.io.*;
+package de.unihalle.informatik.bigdata.millionsongdataset.analysis.heatmap;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class ArtistLocationTranslator {
@@ -14,7 +19,7 @@ public class ArtistLocationTranslator {
 
     /**
      * Creates a HashMap via File input.
-     * @return HashMap which is used to generate a Heatmap via HeatmapGenerator.
+     * @return HashMap which is used to generate a Heatmap via HeatMapGenerator.
      * @throws IOException
      */
     public HashMap<Coordinate,Double> translate() throws IOException {
