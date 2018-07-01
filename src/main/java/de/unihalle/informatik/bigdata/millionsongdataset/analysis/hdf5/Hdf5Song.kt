@@ -159,13 +159,13 @@ Weight: $weight
         }
 
         inner class Hdf5Location : Song.Artist.Location {
-            override val location = handle.artistLocation
+            override val label = handle.artistLocation
             override val latitude = handle.artistLatitude
             override val longitude = handle.artistLongitude
 
             override fun toString(): String {
                 return """
-Location: $location
+Location: $label
 Latitude: $latitude
 Longitude: $longitude
 """.trim()

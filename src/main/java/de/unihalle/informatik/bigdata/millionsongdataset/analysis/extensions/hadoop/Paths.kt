@@ -7,5 +7,5 @@ fun Path.toFile(): File {
     return File(toUri())
 }
 
-val Path.absolutePath
-    get() = toUri().rawPath
+val Path.absolutePath: String
+    get() = toUri().rawPath.orEmpty()

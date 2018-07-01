@@ -54,7 +54,7 @@ var Job.inputPaths: Array<Path>
     }
 
 var Job.inputPathNames: Array<String>
-    get() = inputPaths.map { it.name }.toTypedArray()
+    get() = inputPaths.map { it.toString() }.toTypedArray()
     set(value) {
         inputPaths = value.map { Path(it) }.toTypedArray()
     }
@@ -66,7 +66,7 @@ var Job.inputPath: Path
     }
 
 var Job.inputPathName: String
-    get() = inputPath.name
+    get() = inputPath.toString()
     set(value) {
         inputPath = Path(value)
     }
@@ -77,14 +77,14 @@ var Job.inputDirRecursively: Boolean
         FileInputFormat.setInputDirRecursive(this, value)
     }
 
-var Job.outputPath: Path?
+var Job.outputPath: Path
     get() = FileOutputFormat.getOutputPath(this)
     set(value) {
         FileOutputFormat.setOutputPath(this, value)
     }
 
-var Job.outputPathName: String?
-    get() = outputPath?.name
+var Job.outputPathName: String
+    get() = outputPath.toString()
     set(value) {
         outputPath = Path(value)
     }

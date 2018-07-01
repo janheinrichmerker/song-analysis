@@ -87,7 +87,7 @@ interface Song : WritableComparable<Song> {
         }
 
         interface Location {
-            val location: String
+            val label: String
             val latitude: Double
             val longitude: Double
         }
