@@ -24,7 +24,7 @@ public class ArtistLocation {
      * @param unscaled latitude or longitude.
      * @return scaled latitude or longitude.
      */
-    private double scale8th(double unscaled) {
+    private double scale4th(double unscaled) {
         double floor = Math.floor(unscaled);
         double rest = unscaled - floor;
 
@@ -46,7 +46,7 @@ public class ArtistLocation {
             }
         }
 
-        return 8*(floor + rest);
+        return 4*(floor + rest);
     }
 
     /**
@@ -54,7 +54,7 @@ public class ArtistLocation {
      * @return scaled latitude.
      */
     public double getLatitude() {
-        latitude = scale8th(latitude);
+        latitude = scale4th(latitude);
 
         return latitude;
     }
@@ -64,7 +64,7 @@ public class ArtistLocation {
      * @return scaled longitude.
      */
     public double getLongitude() {
-        longitude = scale8th(longitude);
+        longitude = scale4th(longitude);
 
         return longitude;
     }
