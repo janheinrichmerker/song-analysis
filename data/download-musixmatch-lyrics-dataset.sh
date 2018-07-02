@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Download the musiXmatch lyrics train dataset."
+echo "Download the musiXmatch lyrics dataset."
 
 if [ -f "archives/mxm_dataset_test.txt.zip" ]; then
     echo "Test dataset was already downloaded."
