@@ -5,7 +5,9 @@ import java.io.File
 
 class LyricsLookup(private val lookupFile: File) : AbstractMap<String, LyricsLookup.Entry>() {
 
-    constructor(lookupFilePath: String = defaultLookupTablePath) : this(File(lookupFilePath))
+    constructor(lookupFilePath: String) : this(File(lookupFilePath))
+
+    constructor(dataset: Dataset = Dataset.TEST) : this(dataset.lookupTablePath)
 
     override val entries: Set<Entry> = parseEntries()
 
@@ -53,6 +55,11 @@ class LyricsLookup(private val lookupFile: File) : AbstractMap<String, LyricsLoo
         private const val testLookupTablePath = "data/lyrics/mxm_dataset_test.txt"
         private const val trainLookupTablePath = "data/lyrics/mxm_dataset_train.txt"
         const val defaultLookupTablePath = testLookupTablePath
+    }
+
+    enum class Dataset(val lookupTablePath: String) {
+        TEST(testLookupTablePath),
+        TRAIN(trainLookupTablePath)
     }
 
     data class Entry(
