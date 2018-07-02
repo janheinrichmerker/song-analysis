@@ -17,7 +17,7 @@ ext {
     // hdfLibraryPath = "$hdfJavaLibraryPath:$hdfViewLibraryPath"
     hdfLibraryPath = hdfJavaLibraryPath
 
-    analysisInputPath = "${project.rootDir}/data/songs/A/A/A"
+    analysisInputPath = "${project.rootDir}/data/songs/B"
     analysisOutputPath = "${project.rootDir}/out/analytics"
 }
 
@@ -82,6 +82,8 @@ task "runAnalyse" ("type": Exec, "dependsOn": ["cleanRunAnalyse", "shadowJar"]) 
             "jar", shadowJar.archivePath.path,
             "-Dmapreduce.map.java.opts=-Dhdf.hdf5lib.H5.hdf5lib=$hdfLibraryPath",
             "-Dmapreduce.reduce.java.opts=-Dhdf.hdf5lib.H5.hdf5lib=$hdfLibraryPath",
+            "-Dmapreduce.map.java.opts=-Xmx2048m",
+            "-Dmapreduce.reduce.java.opts=-Xmx2048m",
             "-Dhdf.hdf5lib.H5.hdf5lib=$hdfLibraryPath",
             "-Dhadoop.root.logger=WARN,DRFA",
             analysisInputPath,
