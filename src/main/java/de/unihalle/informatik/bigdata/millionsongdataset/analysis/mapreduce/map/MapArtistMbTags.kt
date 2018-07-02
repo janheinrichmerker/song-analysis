@@ -5,7 +5,7 @@ import org.apache.hadoop.io.IntWritable
 import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.Mapper
 
-class MapOneTag : Mapper<Text, Song, Text, IntWritable>() {
+class MapArtistMbTags : Mapper<Text, Song, Text, IntWritable>() {
     override fun map(
             key: Text,
             song: Song,

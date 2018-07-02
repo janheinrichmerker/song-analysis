@@ -13,7 +13,7 @@ object Analyse {
 
         /*
         val configuration = Configuration()
-        val tool = AnalyseArtistSongHotttness()
+        val tool = AnalyseArtistHotttness()
         val status = ToolRunner.run(configuration, tool, args)
 
         val output = tool.output.filter { (_, value) -> value > 0.0 }

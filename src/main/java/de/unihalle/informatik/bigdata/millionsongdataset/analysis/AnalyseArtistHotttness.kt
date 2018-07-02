@@ -11,7 +11,7 @@ import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat
 import java.io.File
 
-class AnalyseArtistSongHotttness : AnalysisTool() {
+class AnalyseArtistHotttness : AnalysisTool() {
 
     val output: Map<String, Double>
         get() {
@@ -26,8 +26,8 @@ class AnalyseArtistSongHotttness : AnalysisTool() {
         System.setProperty("hdf.hdf5lib.H5.hdf5lib", hdf5LibraryPath)
 
         return jobOf(configuration) {
-            jar = AnalyseArtistSongHotttness::class.containingJar
-            inputPathName = this@AnalyseArtistSongHotttness.inputPathName
+            jar = AnalyseArtistHotttness::class.containingJar
+            inputPathName = this@AnalyseArtistHotttness.inputPathName
             inputDirRecursively = true
             inputFormatKClass = Hdf5SongFileInputFormat::class
             mapperKClass = MapArtistSongHotttness::class
@@ -35,7 +35,7 @@ class AnalyseArtistSongHotttness : AnalysisTool() {
             outputKeyKClass = Text::class
             outputValueKClass = DoubleWritable::class
             outputFormatKClass = TextOutputFormat::class
-            outputPathName = this@AnalyseArtistSongHotttness.outputPathName
+            outputPathName = this@AnalyseArtistHotttness.outputPathName
 
             addCacheFile(File(hdf5LibraryPath).toURI())
         }.await(verbose = true)
