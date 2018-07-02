@@ -1,0 +1,1 @@
+src/main/resources/de/unihalle/informatik/bigdata/millionsongdataset/analysis/Tissot_indicatrix_world_map_equirectangular_proj.svg: https://commons.wikimedia.org/wiki/File:Tissot_indicatrix_world_map_equirectangular_proj.svg?uselang=de
