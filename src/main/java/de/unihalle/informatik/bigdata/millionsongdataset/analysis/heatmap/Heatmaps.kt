@@ -1,5 +1,6 @@
 package de.unihalle.informatik.bigdata.millionsongdataset.analysis.heatmap
 
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.increment
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.heatmap.util.ArgbEvaluator
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.heatmap.util.Gaussian
 import java.awt.image.BufferedImage
@@ -63,7 +64,7 @@ fun BufferedImage.drawHeatmap(
         val x = entry.x.roundToInt()
         val y = entry.y.roundToInt()
         kernel.forEach { (xOffset, yOffset), scale ->
-            buckets.getAndAdd(x + xOffset, y + yOffset, entry.value * scale)
+            buckets.increment(x + xOffset to y + yOffset, entry.value * scale)
         }
     }
 
@@ -87,12 +88,6 @@ fun BufferedImage.drawHeatmap(
 
 private val Double.nearestOdd: Int
     get() = 2 * (this / 2).toInt() + 1
-
-private fun MutableMap<Pair<Int, Int>, Double>.getAndAdd(x: Int, y: Int, increment: Double, default: Double = 0.0) {
-    compute(x to y) { _, value: Double? ->
-        (value ?: 0.0) + increment
-    }
-}
 
 /**
  * Calculates the "warmth" RGB color of a pixel.

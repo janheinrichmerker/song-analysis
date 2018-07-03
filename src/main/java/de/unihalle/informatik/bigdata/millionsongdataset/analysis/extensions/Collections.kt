@@ -14,3 +14,51 @@ inline fun <InputElementType, ReturnKeyType, ReturnValueType> Iterable<InputElem
     }
     return destination
 }
+
+fun <ElementType : Comparable<ElementType>> Iterable<ElementType>.getDominantElement(): ElementType {
+    val buckets = mutableMapOf<ElementType, Int>()
+    forEach { buckets.increment(it) }
+    return buckets.maxBy { it.value }!!.key
+}
+
+fun <ElementType : Comparable<ElementType>> Iterable<ElementType>.getDominantElementOrNull(): ElementType? {
+    val buckets = mutableMapOf<ElementType, Int>()
+    forEach { buckets.increment(it) }
+    return buckets.maxBy { it.value }?.key
+}
+
+fun <KeyType> MutableMap<KeyType, Int>.increment(key: KeyType, increment: Int = 1, default: Int = 0) {
+    compute(key) { _, value ->
+        (value ?: default) + increment
+    }
+}
+
+fun <KeyType> MutableMap<KeyType, Long>.increment(key: KeyType, increment: Long = 1, default: Long = 0) {
+    compute(key) { _, value ->
+        (value ?: default) + increment
+    }
+}
+
+fun <KeyType> MutableMap<KeyType, Float>.increment(key: KeyType, increment: Float = 1.0f, default: Float = 0.0f) {
+    compute(key) { _, value ->
+        (value ?: default) + increment
+    }
+}
+
+fun <KeyType> MutableMap<KeyType, Double>.increment(key: KeyType, increment: Double = 1.0, default: Double = 0.0) {
+    compute(key) { _, value ->
+        (value ?: default) + increment
+    }
+}
+
+fun <KeyType> MutableMap<KeyType, Int>.decrement(key: KeyType, decrement: Int = 1, default: Int = 0) =
+        increment(key, -decrement, default)
+
+fun <KeyType> MutableMap<KeyType, Long>.decrement(key: KeyType, decrement: Long = 1, default: Long = 0) =
+        increment(key, -decrement, default)
+
+fun <KeyType> MutableMap<KeyType, Float>.decrement(key: KeyType, decrement: Float = 1.0f, default: Float = 0.0f) =
+        increment(key, -decrement, default)
+
+fun <KeyType> MutableMap<KeyType, Double>.decrement(key: KeyType, decrement: Double = 1.0, default: Double = 0.0) =
+        increment(key, -decrement, default)

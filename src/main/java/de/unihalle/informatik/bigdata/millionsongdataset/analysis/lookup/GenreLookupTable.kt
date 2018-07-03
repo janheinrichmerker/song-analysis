@@ -31,7 +31,7 @@ class GenreLookupTable(
     data class Entry(
             val trackId: String,
             val majorGenre: String,
-            val minorGenre: String?
+            val minorGenre: String? = null
     ) : LookupTable.Entry<String, Entry>() {
         override val key = trackId
     }

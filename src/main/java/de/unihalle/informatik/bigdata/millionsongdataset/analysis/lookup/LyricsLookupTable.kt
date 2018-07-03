@@ -27,7 +27,7 @@ class LyricsLookupTable(
                             .split(countListDelimiter)
                     Entry(
                             trackId = columns[0],
-                            musixmatchTrackId = columns[1],
+                            musixmatchTrackId = columns[1].toInt(),
                             lyrics = columns
                                     .drop(2)
                                     .mapToMap { column ->
@@ -49,12 +49,12 @@ class LyricsLookupTable(
 
         private const val testLookupTablePath = "data/lyrics/mxm_dataset_test.txt"
         private const val trainLookupTablePath = "data/lyrics/mxm_dataset_train.txt"
-        private const val defaultLookupTablePath = trainLookupTablePath
+        private const val defaultLookupTablePath = testLookupTablePath
     }
 
     data class Entry(
             val trackId: String,
-            val musixmatchTrackId: String,
+            val musixmatchTrackId: Int,
             val lyrics: Lyrics
     ) : LookupTable.Entry<String, Entry>() {
         override val key = trackId
