@@ -10,12 +10,16 @@ fun <DataType> H5ScalarDS.dataOrNull(): DataType? {
     } catch (e: HDF5Exception) {
         val message = e.message.orEmpty()
         when {
-            "empty" in message -> println("Selected (sub)set is empty.")
+            "empty" in message -> logIfNeeded("Selected HDF5 (sub)set is empty.")
             else -> {
-                println("Couldn't read (sub)set.")
+                println("Couldn't read HDF5 (sub)set.")
                 e.printStackTrace()
             }
         }
         null
     }
+}
+
+private fun logIfNeeded(message: String) {
+    // println(message)
 }
