@@ -5,7 +5,7 @@ import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.loa
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hadoop.IoTool
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.heatmap.Heatmap
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.heatmap.draw
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.lookup.ArtistLocationLookup
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.lookup.ArtistLocationLookupTable
 
 object DrawArtistValuesLocationHeatmap : IoTool() {
 
@@ -18,7 +18,7 @@ object DrawArtistValuesLocationHeatmap : IoTool() {
                         .map { columns -> columns[0] to columns[1].toDouble() }
                         .toMap()
 
-        val artistLocationLookup = ArtistLocationLookup()
+        val artistLocationLookup = ArtistLocationLookupTable()
 
         val heatmapEntries = artistValues
                 .mapNotNullTo(mutableSetOf()) { (artistId, value) ->

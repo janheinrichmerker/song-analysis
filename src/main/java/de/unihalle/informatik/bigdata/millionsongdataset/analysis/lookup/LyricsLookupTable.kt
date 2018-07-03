@@ -1,17 +1,13 @@
 package de.unihalle.informatik.bigdata.millionsongdataset.analysis.lookup
 
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.mapToMap
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.model.Lyrics
-import java.io.File
 
-class LyricsLookup(private val lookupFile: File) : AbstractMap<String, LyricsLookup.Entry>() {
+class LyricsLookupTable(
+        lookupFilePath: String = defaultLookupTablePath
+) : LookupTable<String, LyricsLookupTable.Entry>(lookupFilePath) {
 
-    constructor(lookupFilePath: String) : this(File(lookupFilePath))
-
-    constructor(dataset: Dataset = Dataset.TEST) : this(dataset.lookupTablePath)
-
-    override val entries: Set<Entry> = parseEntries()
-
-    private fun parseEntries(): Set<Entry> {
+    override fun parseEntries(): Set<Entry> {
         val lines = lookupFile.readLines()
         val linesUntilWordList = lines
                 .dropWhile { line ->
@@ -29,21 +25,20 @@ class LyricsLookup(private val lookupFile: File) : AbstractMap<String, LyricsLoo
                 .mapTo(mutableSetOf()) { line ->
                     val columns = line
                             .split(countListDelimiter)
-                    val trackId = columns[0]
-                    val musixmatchTrackId = columns[1]
-                    val lyrics: Lyrics = columns
-                            .drop(2)
-                            .map { column ->
-                                val wordCount = column.split(countListElementDelimiter)
-                                val word = words[wordCount[0].toInt() - 1]
-                                val count = wordCount[1].toInt()
-                                word to count
-                            }
-                            .toMap()
-                    Entry(trackId, musixmatchTrackId, lyrics)
+                    Entry(
+                            trackId = columns[0],
+                            musixmatchTrackId = columns[1],
+                            lyrics = columns
+                                    .drop(2)
+                                    .mapToMap { column ->
+                                        val wordCount = column.split(countListElementDelimiter)
+                                        val word = words[wordCount[0].toInt() - 1]
+                                        val count = wordCount[1].toInt()
+                                        word to count
+                                    }
+                    )
                 }
     }
-
 
     companion object {
         const val commentLinePrefix = '#'
@@ -54,20 +49,14 @@ class LyricsLookup(private val lookupFile: File) : AbstractMap<String, LyricsLoo
 
         private const val testLookupTablePath = "data/lyrics/mxm_dataset_test.txt"
         private const val trainLookupTablePath = "data/lyrics/mxm_dataset_train.txt"
-        const val defaultLookupTablePath = testLookupTablePath
-    }
-
-    enum class Dataset(val lookupTablePath: String) {
-        TEST(testLookupTablePath),
-        TRAIN(trainLookupTablePath)
+        private const val defaultLookupTablePath = trainLookupTablePath
     }
 
     data class Entry(
             val trackId: String,
             val musixmatchTrackId: String,
             val lyrics: Lyrics
-    ) : Map.Entry<String, Entry> {
-        override val key: String = trackId
-        override val value: Entry = this
+    ) : LookupTable.Entry<String, Entry>() {
+        override val key = trackId
     }
 }
