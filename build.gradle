@@ -17,8 +17,8 @@ ext {
     // hdfLibraryPath = "$hdfJavaLibraryPath:$hdfViewLibraryPath"
     hdfLibraryPath = hdfJavaLibraryPath
 
-    analysisToolName = "analyse-artist-hotttness"
-    analysisInputPath = "${project.rootDir}/data/songs/B/A/A"
+    analysisToolName = "analyse-year-genres"
+    analysisInputPath = "${project.rootDir}/data/songs/A/A"
     analysisOutputPath = "${project.rootDir}/out/analytics"
 }
 

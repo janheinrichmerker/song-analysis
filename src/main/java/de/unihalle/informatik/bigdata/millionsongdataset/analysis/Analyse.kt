@@ -18,6 +18,9 @@ object Analyse {
                 "draw-artist-danceability-location-heatmap" -> DrawArtistValuesLocationHeatmap
                 "analyse-artist-hotttness" -> AnalyseArtistHotttness
                 "analyse-artist-danceability" -> AnalyseArtistDanceability
+                "analyse-genre-word-count" -> AnalyseGenreWordCount
+                "analyse-year-dominant-genre" -> AnalyseYearDominantGenre
+                "analyse-year-genres" -> AnalyseYearGenres
                 else -> AnalyseArtistHotttness
             }
         }
