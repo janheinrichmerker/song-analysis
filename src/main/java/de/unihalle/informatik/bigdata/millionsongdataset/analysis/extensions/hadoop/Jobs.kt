@@ -118,6 +118,13 @@ var Job.inputFormatKClass: KClass<out InputFormat<*, *>>
         inputFormatClass = kClass.java
     }
 
+var Job.inputFormat: KClass<out InputFormat<*, *>>
+    get() = inputFormatClass.kotlin
+    @Throws(IllegalStateException::class)
+    set(kClass) {
+        inputFormatClass = kClass.java
+    }
+
 var Job.outputFormatKClass: KClass<out OutputFormat<*, *>>
     get() = outputFormatClass.kotlin
     @Throws(IllegalStateException::class)
@@ -125,7 +132,21 @@ var Job.outputFormatKClass: KClass<out OutputFormat<*, *>>
         outputFormatClass = kClass.java
     }
 
+var Job.outputFormat: KClass<out OutputFormat<*, *>>
+    get() = outputFormatClass.kotlin
+    @Throws(IllegalStateException::class)
+    set(kClass) {
+        outputFormatClass = kClass.java
+    }
+
 var Job.mapperKClass: KClass<out Mapper<*, *, *, *>>
+    get() = mapperClass.kotlin
+    @Throws(IllegalStateException::class)
+    set(kClass) {
+        mapperClass = kClass.java
+    }
+
+var Job.mapper: KClass<out Mapper<*, *, *, *>>
     get() = mapperClass.kotlin
     @Throws(IllegalStateException::class)
     set(kClass) {
@@ -143,7 +164,21 @@ var Job.combinerKClass: KClass<out Reducer<*, *, *, *>>
         combinerClass = kClass.java
     }
 
+var Job.combiner: KClass<out Reducer<*, *, *, *>>
+    get() = combinerClass.kotlin
+    @Throws(IllegalStateException::class)
+    set(kClass) {
+        combinerClass = kClass.java
+    }
+
 var Job.reducerKClass: KClass<out Reducer<*, *, *, *>>
+    get() = reducerClass.kotlin
+    @Throws(IllegalStateException::class)
+    set(kClass) {
+        reducerClass = kClass.java
+    }
+
+var Job.reducer: KClass<out Reducer<*, *, *, *>>
     get() = reducerClass.kotlin
     @Throws(IllegalStateException::class)
     set(kClass) {
@@ -157,7 +192,21 @@ var Job.partitionerKClass: KClass<out Partitioner<*, *>>
         partitionerClass = kClass.java
     }
 
+var Job.partitioner: KClass<out Partitioner<*, *>>
+    get() = partitionerClass.kotlin
+    @Throws(IllegalStateException::class)
+    set(kClass) {
+        partitionerClass = kClass.java
+    }
+
 var Job.mapOutputKeyKClass: KClass<*>
+    get() = mapOutputKeyClass.kotlin
+    @Throws(IllegalStateException::class)
+    set(kClass) {
+        mapOutputKeyClass = kClass.java
+    }
+
+var Job.mapOutputKey: KClass<*>
     get() = mapOutputKeyClass.kotlin
     @Throws(IllegalStateException::class)
     set(kClass) {
@@ -171,7 +220,21 @@ var Job.mapOutputValueKClass: KClass<*>
         mapOutputValueClass = kClass.java
     }
 
+var Job.mapOutputValue: KClass<*>
+    get() = mapOutputValueClass.kotlin
+    @Throws(IllegalStateException::class)
+    set(kClass) {
+        mapOutputValueClass = kClass.java
+    }
+
 var Job.outputKeyKClass: KClass<*>
+    get() = outputKeyClass.kotlin
+    @Throws(IllegalStateException::class)
+    set(kClass) {
+        outputKeyClass = kClass.java
+    }
+
+var Job.outputKey: KClass<*>
     get() = outputKeyClass.kotlin
     @Throws(IllegalStateException::class)
     set(kClass) {
@@ -185,37 +248,45 @@ var Job.outputValueKClass: KClass<*>
         outputValueClass = kClass.java
     }
 
-@Throws(IllegalStateException::class)
-fun Job.setCombinerKeyGroupingComparatorKClass(kClass: KClass<out RawComparator<*>>) {
-    setCombinerKeyGroupingComparatorClass(kClass.java)
-}
+var Job.outputValue: KClass<*>
+    get() = outputValueClass.kotlin
+    @Throws(IllegalStateException::class)
+    set(kClass) {
+        outputValueClass = kClass.java
+    }
 
 @Throws(IllegalStateException::class)
-fun Job.setSortComparatorKClass(kClass: KClass<out RawComparator<*>>) {
-    setSortComparatorClass(kClass.java)
-}
+fun Job.setCombinerKeyGroupingComparatorKClass(kClass: KClass<out RawComparator<*>>) =
+        setCombinerKeyGroupingComparatorClass(kClass.java)
 
 @Throws(IllegalStateException::class)
-fun Job.setGroupingComparatorKClass(kClass: KClass<out RawComparator<*>>) {
-    setGroupingComparatorClass(kClass.java)
-}
+fun Job.setCombinerKeyGroupingComparator(kClass: KClass<out RawComparator<*>>) =
+        setCombinerKeyGroupingComparatorKClass(kClass)
+
+@Throws(IllegalStateException::class)
+fun Job.setSortComparatorKClass(kClass: KClass<out RawComparator<*>>) =
+        setSortComparatorClass(kClass.java)
+
+@Throws(IllegalStateException::class)
+fun Job.setSortComparator(kClass: KClass<out RawComparator<*>>) =
+        setSortComparatorKClass(kClass)
+
+@Throws(IllegalStateException::class)
+fun Job.setGroupingComparatorKClass(kClass: KClass<out RawComparator<*>>) =
+        setGroupingComparatorClass(kClass.java)
+
+@Throws(IllegalStateException::class)
+fun Job.setGroupingComparator(kClass: KClass<out RawComparator<*>>) =
+        setGroupingComparatorKClass(kClass)
 
 
 var Job.minSplitSize: Long
-    get() {
-        return configuration.getLong("mapreduce.input.fileinputformat.split.minsize", 1L)
-    }
-    set(size) {
-        configuration.setLong("mapreduce.input.fileinputformat.split.minsize", size)
-    }
+    get() = configuration.getLong("mapreduce.input.fileinputformat.split.minsize", 1L)
+    set(size) = configuration.setLong("mapreduce.input.fileinputformat.split.minsize", size)
 
 var Job.maxSplitSize: Long
-    get() {
-        return configuration.getLong("mapreduce.input.fileinputformat.split.maxsize", 9223372036854775807L)
-    }
-    set(size) {
-        configuration.setLong("mapreduce.input.fileinputformat.split.maxsize", size)
-    }
+    get() = configuration.getLong("mapreduce.input.fileinputformat.split.maxsize", 9223372036854775807L)
+    set(size) = configuration.setLong("mapreduce.input.fileinputformat.split.maxsize", size)
 
 
 @Throws(IOException::class, InterruptedException::class, ClassNotFoundException::class)
