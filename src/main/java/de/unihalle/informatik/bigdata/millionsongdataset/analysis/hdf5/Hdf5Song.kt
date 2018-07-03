@@ -260,7 +260,7 @@ Start: $start
 
         override fun toString(): String {
             return """
-Artist: $start
+Start: $start
 Confidence: $confidence
 Pitch: $pitch
 Timbre: $timbre
