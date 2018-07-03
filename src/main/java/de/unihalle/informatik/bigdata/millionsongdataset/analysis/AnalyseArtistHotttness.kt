@@ -1,7 +1,7 @@
 package de.unihalle.informatik.bigdata.millionsongdataset.analysis
 
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.hadoop.*
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hadoop.AnalysisTool
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hadoop.IoTool
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.map.MapArtistSongHotttness
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.reader.hdf5.Hdf5SongFileInputFormat
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.reduce.ReduceDoubleMean
@@ -11,23 +11,14 @@ import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat
 import java.io.File
 
-class AnalyseArtistHotttness : AnalysisTool() {
+object AnalyseArtistHotttness : IoTool() {
 
-    val output: Map<String, Double>
-        get() {
-            return outputTabSeparated
-                    .filter { it.size == 2 }
-                    .map { it[0] to it[1].toDouble() }
-                    .toMap()
-        }
-
-    override fun analyse(arguments: Array<String>): Boolean {
-        val hdf5LibraryPath = configuration["hdf.hdf5lib.H5.hdf5lib"]
-        System.setProperty("hdf.hdf5lib.H5.hdf5lib", hdf5LibraryPath)
+    override fun onRun(arguments: Array<String>): Boolean {
+        println("Analysing '$inputFileName'. (Outputs will be saved to '$outputFileName'.)")
 
         return jobOf(configuration) {
             jar = AnalyseArtistHotttness::class.containingJar
-            inputPathName = this@AnalyseArtistHotttness.inputPathName
+            inputPathName = this@AnalyseArtistHotttness.inputFileName
             inputDirRecursively = true
             inputFormatKClass = Hdf5SongFileInputFormat::class
             mapperKClass = MapArtistSongHotttness::class
@@ -35,7 +26,7 @@ class AnalyseArtistHotttness : AnalysisTool() {
             outputKeyKClass = Text::class
             outputValueKClass = DoubleWritable::class
             outputFormatKClass = TextOutputFormat::class
-            outputPathName = this@AnalyseArtistHotttness.outputPathName
+            outputPathName = this@AnalyseArtistHotttness.outputFileName
 
             addCacheFile(File(hdf5LibraryPath).toURI())
         }.await(verbose = true)
