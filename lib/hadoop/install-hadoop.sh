@@ -4,7 +4,7 @@ echo "Install Hadoop executables."
 
 if type -p java; then
     echo "Found Java executable in PATH."
-elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
+elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]]; then
     echo "Found Java executable in JAVA_HOME."     
 else
     echo "No Java executable found. Aborting installation."

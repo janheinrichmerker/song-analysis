@@ -17,6 +17,16 @@ Analysing The Million Song Dataset.
 ./data/download.sh
 ```
 
+## Configuration
+
+### Log level
+
+If you want Hadoop to only print warnings to the console,
+add the following line to `lib/hadoop/hadoop-3.1.0/etc/hadoop/hadoop-env.sh`:
+```bash
+HADOOP_ROOT_LOGGER=WARN,DRFA
+```
+
 ## Questions
   
 *TODO:* List specific questions.
