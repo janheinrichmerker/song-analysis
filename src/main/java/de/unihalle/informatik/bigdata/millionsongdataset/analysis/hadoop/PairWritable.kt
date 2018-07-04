@@ -16,7 +16,7 @@ import java.io.DataOutput
  * @property second Second value.
  * @constructor Creates a new instance of Pair.
  */
-abstract class PairWritable<A : WritableComparable<in A>, B : WritableComparable<in B>>()
+abstract class PairWritable<A : WritableComparable<in A>, B : WritableComparable<in B>> internal constructor()
     : WritableComparable<PairWritable<A, B>> {
 
     constructor(first: A, second: B) : this() {
@@ -27,17 +27,20 @@ abstract class PairWritable<A : WritableComparable<in A>, B : WritableComparable
     lateinit var first: A
     lateinit var second: B
 
-    abstract fun createFields()
-
     final override fun readFields(input: DataInput) {
-        createFields()
         first.readFields(input)
         second.readFields(input)
     }
 
-    override fun write(output: DataOutput) {
+    final override fun write(output: DataOutput) {
         first.write(output)
         second.write(output)
+    }
+
+    override fun compareTo(other: PairWritable<A, B>?): Int {
+        return first.compareTo(other?.first)
+                .takeIf { it != 0 }
+                ?: second.compareTo(other?.second)
     }
 
     /**
