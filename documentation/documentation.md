@@ -33,62 +33,62 @@ Therefore comes a natural personal interest, to learn [...].
 
 The dataset contains 1 000 000 track files. Each one is stored in the HDF5 format[^hdf5-home] and consists of the following fields:[^million-song-field-list ]
 
-| Field name | Type | Description |
-| :--- | :--- |
-| Analysis sample rate | `Float` | Sample rate of the audio used |
-| Artist 7digitalid | `Int` | ID from 7digital.com or -1 |
-| Artist familiarity | `Float` | Algorithmic estimation |
-| Artist hotttnesss | `Float` | Algorithmic estimation |
-| Artist id | `String` | Echo Nest ID |
-| Artist latitude | `Float` | Latitude |
-| Artist location | `String` | Location name |
-| Artist longitude | `Float` | Longitude |
-| Artist MusicBrainz ID | `String` | ID from musicbrainz.org |
-| Artist MusicBrainz tags | `Array<String>` | Tags from musicbrainz.org |
-| Artist MusicBrainz tags count | `Array<Int>` | Tag counts for musicbrainz tags |
-| Artist name | `String` | Artist name |
-| Artist Playme ID | `Int` | ID from playme.com, or -1 |
-| Artist terms | `Array<String>` | Echo Nest tags |
-| Artist terms frequency | `Array<Float>` | Echo Nest tags frequencies |
-| Artist terms weight | `Array<Float>` | Echo Nest tags weight |
-| Audio md5 | `String` | Audio hash code |
-| Bars confidence | `Array<Float>` | Confidence measure |
-| Bars start | `Array<Float>` | Beginning of bars, usually on a beat |
-| Beats confidence | `Array<Float>` | Confidence measure |
-| Beats start | `Array<Float>` | Result of beat tracking |
-| Danceability | `Float` | Algorithmic estimation |
-| Duration | `Float` | In seconds |
-| End of fade in | `Float` | Seconds at the beginning of the song |
-| Energy | `Float` | Energy from listener point of view |
-| Key | `Int` | Key the song is in |
-| Key confidence | `Float` | Confidence measure |
-| Loudness | `Float` | Overall loudness in dB |
-| Mode | `Int` | Major or minor |
-| Mode confidence | `Float` | Confidence measure |
-| Release | `String` | Album name |
-| Release 7digitalid | `Int` | ID from 7digital.com or -1 |
-| Sections confidence | `Array<Float>` | Confidence measure |
-| Sections start | `Array<Float>` | Largest grouping in a song, e.g. verse |
-| Segments confidence | `Array<Float>` | Confidence measure |
-| Segments loudness max | `Array<Float>` | Max dB value |
-| Segments loudness max time | `Array<Float>` | Time of max dB value, i.e. end of attack |
-| Segments loudness max start | `Array<Float>` | dB value at onset |
-| Segments pitches | `2dArray<Float>` | Chroma feature, one value per note |
-| Segments start | `Array<Float>` | Musical events, ~ note onsets |
-| Segments timbre | `2dArray<Float>` | Texture features (MFCC+PCA-like) |
-| Similar artists | `Array<String>` | Echo Nest artist IDs (sim. algo. unpublished) |
-| Song hotttnesss | `Float` | Algorithmic estimation |
-| Song id | `String` | Echo Nest song ID |
-| Start of fade out | `Float` | Time in sec |
-| Tatums confidence | `Array<Float>` | Confidence measure |
-| Tatums start | `Array<Float>` | Smallest rhythmic element |
-| Tempo | `Float` | Estimated tempo in BPM |
-| Time signature | `Int` | Estimate of number of beats per bar, e.g. 4 |
-| Time signature confidence | `Float` | Confidence measure |
-| Title | `String` | Song title |
-| Track id | `String` | Echo Nest track ID |
-| Track 7digitalid | `Int` | ID from 7digital.com or -1 |
-| Year | `Int` | Song release year from MusicBrainz or 0 |
+| Field name                    | Type             | Description                                   |
+|-------------------------------|------------------|-----------------------------------------------|
+| Analysis sample rate          | `Float`          | Sample rate of the audio used                 |
+| Artist 7digitalid             | `Int`            | ID from 7digital.com or -1                    |
+| Artist familiarity            | `Float`          | Algorithmic estimation                        |
+| Artist hotttnesss             | `Float`          | Algorithmic estimation                        |
+| Artist id                     | `String`         | Echo Nest ID                                  |
+| Artist latitude               | `Float`          | Latitude                                      |
+| Artist location               | `String`         | Location name                                 |
+| Artist longitude              | `Float`          | Longitude                                     |
+| Artist MusicBrainz ID         | `String`         | ID from musicbrainz.org                       |
+| Artist MusicBrainz tags       | `Array<String>`  | Tags from musicbrainz.org                     |
+| Artist MusicBrainz tags count | `Array<Int>`     | Tag counts for musicbrainz tags               |
+| Artist name                   | `String`         | Artist name                                   |
+| Artist Playme ID              | `Int`            | ID from playme.com, or -1                     |
+| Artist terms                  | `Array<String>`  | Echo Nest tags                                |
+| Artist terms frequency        | `Array<Float>`   | Echo Nest tags frequencies                    |
+| Artist terms weight           | `Array<Float>`   | Echo Nest tags weight                         |
+| Audio md5                     | `String`         | Audio hash code                               |
+| Bars confidence               | `Array<Float>`   | Confidence measure                            |
+| Bars start                    | `Array<Float>`   | Beginning of bars, usually on a beat          |
+| Beats confidence              | `Array<Float>`   | Confidence measure                            |
+| Beats start                   | `Array<Float>`   | Result of beat tracking                       |
+| Danceability                  | `Float`          | Algorithmic estimation                        |
+| Duration                      | `Float`          | In seconds                                    |
+| End of fade in                | `Float`          | Seconds at the beginning of the song          |
+| Energy                        | `Float`          | Energy from listener point of view            |
+| Key                           | `Int`            | Key the song is in                            |
+| Key confidence                | `Float`          | Confidence measure                            |
+| Loudness                      | `Float`          | Overall loudness in dB                        |
+| Mode                          | `Int`            | Major or minor                                |
+| Mode confidence               | `Float`          | Confidence measure                            |
+| Release                       | `String`         | Album name                                    |
+| Release 7digitalid            | `Int`            | ID from 7digital.com or -1                    |
+| Sections confidence           | `Array<Float>`   | Confidence measure                            |
+| Sections start                | `Array<Float>`   | Largest grouping in a song, e.g. verse        |
+| Segments confidence           | `Array<Float>`   | Confidence measure                            |
+| Segments loudness max         | `Array<Float>`   | Max dB value                                  |
+| Segments loudness max time    | `Array<Float>`   | Time of max dB value, i.e. end of attack      |
+| Segments loudness max start   | `Array<Float>`   | dB value at onset                             |
+| Segments pitches              | `2dArray<Float>` | Chroma feature, one value per note            |
+| Segments start                | `Array<Float>`   | Musical events, ~ note onsets                 |
+| Segments timbre               | `2dArray<Float>` | Texture features (MFCC+PCA-like)              |
+| Similar artists               | `Array<String>`  | Echo Nest artist IDs (sim. algo. unpublished) |
+| Song hotttnesss               | `Float`          | Algorithmic estimation                        |
+| Song id                       | `String`         | Echo Nest song ID                             |
+| Start of fade out             | `Float`          | Time in sec                                   |
+| Tatums confidence             | `Array<Float>`   | Confidence measure                            |
+| Tatums start                  | `Array<Float>`   | Smallest rhythmic element                     |
+| Tempo                         | `Float`          | Estimated tempo in BPM                        |
+| Time signature                | `Int`            | Estimate of number of beats per bar, e.g. 4   |
+| Time signature confidence     | `Float`          | Confidence measure                            |
+| Title                         | `String`         | Song title                                    |
+| Track id                      | `String`         | Echo Nest track ID                            |
+| Track 7digitalid              | `Int`            | ID from 7digital.com or -1                    |
+| Year                          | `Int`            | Song release year from MusicBrainz or 0       |
 
 [^million-song-field-list]: https://labrosa.ee.columbia.edu/millionsong/pages/field-list
 [^hdf5-home]: https://support.hdfgroup.org/HDF5/
