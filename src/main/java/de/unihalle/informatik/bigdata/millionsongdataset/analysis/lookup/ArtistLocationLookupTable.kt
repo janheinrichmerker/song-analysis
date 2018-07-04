@@ -2,27 +2,41 @@ package de.unihalle.informatik.bigdata.millionsongdataset.analysis.lookup
 
 class ArtistLocationLookupTable(
         lookupFilePath: String = defaultLookupTablePath
-) : LookupTable<String, ArtistLocationLookupTable.Entry>(lookupFilePath) {
+) : AbstractFileLookupTable<String, ArtistLocationLookupTable.Entry>(lookupFilePath) {
 
-    override fun parseEntries(): Set<Entry> {
-        return lookupFile
-                .readLines()
-                .mapTo(mutableSetOf()) { line ->
-                    val field = line.split(fieldDelimiter)
-                    Entry(
-                            artistId = field[0],
-                            latitude = field[1].toDouble(),
-                            longitude = field[2].toDouble(),
-                            trackId = field[3],
-                            artistName = field[4]
-                    )
-                }
+    private fun <T> useEntries(block: (entries: Sequence<Entry>) -> T): T {
+        return useLookupFileLines { lines ->
+            val entries = lines
+                    .map { line -> line.split(fieldDelimiter) }
+                    .map { fields ->
+                        Entry(
+                                artistId = fields[0],
+                                latitude = fields[1].toDouble(),
+                                longitude = fields[2].toDouble(),
+                                trackId = fields[3],
+                                artistName = fields[4]
+                        )
+                    }
+            block(entries)
+        }
+    }
+
+    override val keys: Set<String> =
+            useEntries { entries ->
+                entries.map { it.artistId }.toSet()
+            }
+
+    override fun get(key: String): Entry? {
+        return useEntries { entries ->
+            entries.find { it.artistId == key }
+        }
     }
 
     companion object {
-        const val fieldDelimiter = "<SEP>"
+        private const val fieldDelimiter = "<SEP>"
 
-        const val defaultLookupTablePath = "data/additional-files/subset_artist_location.txt"
+        const val subsetLookupTablePath = "data/additional-files/subset_artist_location.txt"
+        private const val defaultLookupTablePath = subsetLookupTablePath
     }
 
     data class Entry(
@@ -31,7 +45,5 @@ class ArtistLocationLookupTable(
             val longitude: Double,
             val trackId: String,
             val artistName: String
-    ) : LookupTable.Entry<String, Entry>() {
-        override val key = artistId
-    }
+    )
 }
