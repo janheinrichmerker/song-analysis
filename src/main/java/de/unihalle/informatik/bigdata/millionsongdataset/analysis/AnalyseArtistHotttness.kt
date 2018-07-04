@@ -9,7 +9,6 @@ import de.unihalle.informatik.bigdata.songs.extensions.containingJar
 import org.apache.hadoop.io.DoubleWritable
 import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat
-import java.io.File
 
 object AnalyseArtistHotttness : IoTool() {
 
@@ -18,7 +17,7 @@ object AnalyseArtistHotttness : IoTool() {
 
         return jobOf(configuration) {
             jar = AnalyseArtistHotttness::class.containingJar
-            inputPathName = this@AnalyseArtistHotttness.inputFileName
+            inputPathName = inputFileName
             inputDirRecursively = true
             inputFormatKClass = Hdf5SongFileInputFormat::class
             mapperKClass = MapArtistSongHotttness::class
@@ -26,9 +25,8 @@ object AnalyseArtistHotttness : IoTool() {
             outputKeyKClass = Text::class
             outputValueKClass = DoubleWritable::class
             outputFormatKClass = TextOutputFormat::class
-            outputPathName = this@AnalyseArtistHotttness.outputFileName
-
-            addCacheFile(File(hdf5LibraryPath).toURI())
+            outputPathName = outputFileName
+            cacheFilePaths = listOf(hdf5LibraryPath)
         }.await(verbose = true)
     }
 }

@@ -21,16 +21,23 @@ class MapArtistSongLyrics : Mapper<Text, Song, TextPairWritable, IntWritable>() 
             key: Text,
             song: Song,
             context: Context) {
-        val lyrics = lyricsLookupTable[song.track.id]?.lyrics
-        println(lyrics)
-        val genre = genreLookupTable[song.track.id]?.majorGenre ?: "Unknown"
-        if (lyrics == null || genre == null) {
+        if (song.track.id !in lyricsLookupTable || song.track.id !in genreLookupTable) {
             println("No lyrics could be found for track ${song.track.id}.")
             return
         }
+        val lyricsEntry = lyricsLookupTable[song.track.id]!!
+        val lyrics = lyricsEntry.lyrics
+        val genreEntry = genreLookupTable[song.track.id]!!
+        val majorGenre = genreEntry.majorGenre
+        val minorGenre = genreEntry.minorGenre
         lyrics.forEach { (word, count) ->
-            println("Mapping ($genre, $word) -> $count.")
-            context.write(TextPairWritable(Text(genre), Text(word)), IntWritable(count))
+            println("Mapping ($majorGenre, $word) -> $count.")
+            context.write(TextPairWritable(Text(majorGenre), Text(word)), IntWritable(count))
+
+            if (minorGenre != null) {
+                println("Mapping ($minorGenre, $word) -> $count.")
+                context.write(TextPairWritable(Text(minorGenre), Text(word)), IntWritable(count))
+            }
         }
     }
 }

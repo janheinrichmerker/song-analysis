@@ -7,7 +7,9 @@ import org.apache.hadoop.io.RawComparator
 import org.apache.hadoop.mapreduce.*
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat
+import java.io.File
 import java.io.IOException
+import java.net.URI
 import kotlin.reflect.KClass
 
 @Throws(IOException::class)
@@ -298,3 +300,16 @@ fun Job.async() {
 fun Job.await(verbose: Boolean = false): Boolean {
     return waitForCompletion(verbose)
 }
+
+
+var Job.cacheArchivePaths: List<String>
+    get() = cacheArchives.map { File(it).path }
+    set(value) {
+        cacheArchives = value.map { URI(it) }.toTypedArray()
+    }
+
+var Job.cacheFilePaths: List<String>
+    get() = cacheFiles.map { File(it).path }
+    set(value) {
+        cacheFiles = value.map { URI(it) }.toTypedArray()
+    }

@@ -2,10 +2,9 @@ package de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.red
 
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hadoop.TextPairWritable
 import org.apache.hadoop.io.IntWritable
-import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.Reducer
 
-class ReduceGenreWordCounts : Reducer<TextPairWritable, IntWritable, Text, IntWritable>() {
+class ReduceGenreWordCounts : Reducer<TextPairWritable, IntWritable, TextPairWritable, IntWritable>() {
 
     override fun reduce(
             key: TextPairWritable,
@@ -16,6 +15,6 @@ class ReduceGenreWordCounts : Reducer<TextPairWritable, IntWritable, Text, IntWr
             sum += value.get()
         }
 
-        context.write(Text("(${key.first},${key.second})"), IntWritable(sum))
+        context.write(key, IntWritable(sum))
     }
 }

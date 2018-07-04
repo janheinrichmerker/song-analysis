@@ -9,7 +9,6 @@ import de.unihalle.informatik.bigdata.songs.extensions.containingJar
 import org.apache.hadoop.io.DoubleWritable
 import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat
-import java.io.File
 
 object AnalyseArtistDanceability : IoTool() {
 
@@ -27,8 +26,7 @@ object AnalyseArtistDanceability : IoTool() {
             outputValueKClass = DoubleWritable::class
             outputFormatKClass = TextOutputFormat::class
             outputPathName = outputFileName
-
-            addCacheFile(File(hdf5LibraryPath).toURI())
+            cacheFilePaths = listOf(hdf5LibraryPath)
         }.await(verbose = true)
     }
 }
