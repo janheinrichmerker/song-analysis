@@ -10,6 +10,7 @@ import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.read
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.reduce.ReduceGenreWordCounts
 import de.unihalle.informatik.bigdata.songs.extensions.containingJar
 import org.apache.hadoop.io.IntWritable
+import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat
 
 object AnalyseGenreWordCount : IoTool() {
@@ -26,7 +27,7 @@ object AnalyseGenreWordCount : IoTool() {
             mapOutputKeyKClass = TextPairWritable::class
             mapOutputValueKClass = IntWritable::class
             reducerKClass = ReduceGenreWordCounts::class
-            outputKeyKClass = TextPairWritable::class
+            outputKeyKClass = Text::class
             outputValueKClass = IntWritable::class
             outputFormatKClass = TextOutputFormat::class
             outputPathName = outputFileName

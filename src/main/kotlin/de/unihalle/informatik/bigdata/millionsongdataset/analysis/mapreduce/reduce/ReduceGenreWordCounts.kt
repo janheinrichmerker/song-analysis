@@ -5,7 +5,7 @@ import org.apache.hadoop.io.IntWritable
 import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.Reducer
 
-class ReduceGenreWordCounts : Reducer<TextPairWritable, IntWritable, TextPairWritable, IntWritable>() {
+class ReduceGenreWordCounts : Reducer<TextPairWritable, IntWritable, Text, IntWritable>() {
 
     override fun reduce(
             key: TextPairWritable,
@@ -16,6 +16,9 @@ class ReduceGenreWordCounts : Reducer<TextPairWritable, IntWritable, TextPairWri
             sum += value.get()
         }
 
-        context.write(key, IntWritable(sum))
+        val genre = key.first.toString()
+        val word = key.second.toString()
+
+        context.write(Text("$genre\t$word"), IntWritable(sum))
     }
 }
