@@ -109,14 +109,14 @@ tasks {
         group = "Visualize"
         description = "Draws a heatmap of values based on the artist's location."
 
-        val inputPath = File(project.rootDir, "results/average-song-hotttness-by-artist-B.tsv")
-        val outputPath = File(project.rootDir, "out/images/$name.png")
+        val input = File(project.rootDir, "results/average-song-hotttness-by-artist-B.tsv")
+        val output = File(project.rootDir, "out/images/$name.png")
 
         classpath = java.sourceSets["main"].runtimeClasspath
-        main = "de.unihalle.informatik.bigdata.millionsongdataset.analysis.DrawArtistValuesLocationHeatmap"
-        args = listOf(inputPath.path, outputPath.path)
+        main = "${project.group}.DrawArtistValuesLocationHeatmap"
+        args = listOf(input.path, output.path)
 
-        outputs.file(shadowJar)
+        outputs.file(output)
     }
 
 }

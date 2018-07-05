@@ -42,7 +42,7 @@ object DrawArtistValuesLocationHeatmap {
         println("Found " + heatmap.entries.size + " artists with known location.")
 
         heatmap.draw(
-                loadResourceFile("world-map-equirectangular-projection-1000.png"),
+                loadResourceFile("world-map-equirectangular-projection-3000.png"),
                 outputFile.createFileAndDirectoryIfNotExists(),
                 1 / 100.0)
     }
