@@ -100,7 +100,7 @@ tasks {
 
     val analyseYearGenres by creating(HadoopAnalyseTask::class) {
         tool = "analyse-year-genres"
-        inputPath = File(project.rootDir, "data/songs/A/A/A")
+        inputPath = File(project.rootDir, "data/songs/B")
         outputPath = File(project.rootDir, "out/analytics")
     }
     analyseYearGenres.dependsOn(shadowJar)
