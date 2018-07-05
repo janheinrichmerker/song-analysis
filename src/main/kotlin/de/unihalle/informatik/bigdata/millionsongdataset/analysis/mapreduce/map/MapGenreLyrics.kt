@@ -8,7 +8,7 @@ import org.apache.hadoop.io.IntWritable
 import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.Mapper
 
-class MapArtistSongLyrics : Mapper<Text, Song, TextPairWritable, IntWritable>() {
+class MapGenreLyrics : Mapper<Text, Song, TextPairWritable, IntWritable>() {
     lateinit var lyricsLookupTable: LyricsLookupTable
     lateinit var genreLookupTable: GenreLookupTable
 

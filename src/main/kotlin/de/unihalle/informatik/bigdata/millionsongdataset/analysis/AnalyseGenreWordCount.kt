@@ -5,7 +5,7 @@ import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hadoop.IoTool
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hadoop.TextPairWritable
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.lookup.GenreLookupTable
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.lookup.LyricsLookupTable
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.map.MapArtistSongLyrics
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.map.MapGenreLyrics
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.reader.hdf5.Hdf5SongFileInputFormat
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.reduce.ReduceGenreWordCounts
 import de.unihalle.informatik.bigdata.songs.extensions.containingJar
@@ -23,7 +23,7 @@ object AnalyseGenreWordCount : IoTool() {
             inputPathName = inputFileName
             inputDirRecursively = true
             inputFormatKClass = Hdf5SongFileInputFormat::class
-            mapperKClass = MapArtistSongLyrics::class
+            mapperKClass = MapGenreLyrics::class
             mapOutputKeyKClass = TextPairWritable::class
             mapOutputValueKClass = IntWritable::class
             reducerKClass = ReduceGenreWordCounts::class
