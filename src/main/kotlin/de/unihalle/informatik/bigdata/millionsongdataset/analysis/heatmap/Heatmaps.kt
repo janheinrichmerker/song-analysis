@@ -50,13 +50,17 @@ fun BufferedImage.drawHeatmap(
     val scaledHeatmap = heatmap.scale(width, height)
 
     // Generate a 2D Gaussian kernel to smooth-out "hot spots".
-    val averageSize = (heatmap.width + heatmap.height) / 2.0
-    val averageScale = (width / heatmap.width.toDouble() + height / heatmap.height.toDouble()) / 2.0
+    val averageSize = (width + height) / 2.0
 
-    val gaussian = Gaussian(averageSize / averageScale * smoothness)
-    val kernelSizeFactor = 10.0
-    val kernelSize = (gaussian.sigma * kernelSizeFactor)
-    val kernel = gaussian.generateKernel2D(kernelSize.nearestOdd)
+    val kernel: Map<Pair<Int, Int>, Double> =
+            if (smoothness <= 0) {
+                mapOf((0 to 0) to 1.0)
+            } else {
+                val gaussian = Gaussian(averageSize / 2 * smoothness)
+                val kernelSizeFactor = 10.0
+                val kernelSize = (gaussian.sigma * kernelSizeFactor)
+                gaussian.generateKernel2D(kernelSize.nearestOdd)
+            }
 
     // Round all heatmap entry coordinates to their nearest integer position.
     val buckets = mutableMapOf<Pair<Int, Int>, Double>()

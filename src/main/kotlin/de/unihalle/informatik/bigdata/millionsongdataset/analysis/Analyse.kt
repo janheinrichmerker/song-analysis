@@ -13,9 +13,6 @@ object Analyse {
 
         val tool = SelectableTool {
             when (it) {
-                "draw-artist-values-location-heatmap",
-                "draw-artist-hotttness-location-heatmap",
-                "draw-artist-danceability-location-heatmap" -> DrawArtistValuesLocationHeatmap
                 "analyse-artist-hotttness" -> AnalyseArtistHotttness
                 "analyse-artist-danceability" -> AnalyseArtistDanceability
                 "analyse-genre-word-count" -> AnalyseGenreWordCount

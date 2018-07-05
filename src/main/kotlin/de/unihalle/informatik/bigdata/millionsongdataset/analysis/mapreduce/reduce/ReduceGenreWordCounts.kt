@@ -2,6 +2,7 @@ package de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.red
 
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hadoop.TextPairWritable
 import org.apache.hadoop.io.IntWritable
+import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.Reducer
 
 class ReduceGenreWordCounts : Reducer<TextPairWritable, IntWritable, TextPairWritable, IntWritable>() {

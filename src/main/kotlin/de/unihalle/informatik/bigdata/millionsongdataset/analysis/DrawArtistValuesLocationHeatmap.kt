@@ -2,14 +2,25 @@ package de.unihalle.informatik.bigdata.millionsongdataset.analysis
 
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.createFileAndDirectoryIfNotExists
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.loadResourceFile
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hadoop.IoTool
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.heatmap.Heatmap
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.heatmap.draw
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.lookup.ArtistLocationLookupTable
+import java.io.File
 
-object DrawArtistValuesLocationHeatmap : IoTool() {
+object DrawArtistValuesLocationHeatmap {
 
-    override fun onRun(arguments: Array<String>): Boolean {
+    @JvmStatic
+    fun main(arguments: Array<String>) {
+        if (arguments.size < 2 ||
+                arguments[0].isEmpty() ||
+                arguments[1].isEmpty()) {
+            throw IllegalArgumentException("Missing analysis input and/or output directory arguments.")
+        }
+
+        val inputFile = File(arguments[0])
+        val outputFile = File(arguments[1])
+
+
         val artistValues =
                 inputFile.readLines()
                         .map { line -> line.split(",", "\t").map { it.trim() } }
@@ -33,8 +44,6 @@ object DrawArtistValuesLocationHeatmap : IoTool() {
         heatmap.draw(
                 loadResourceFile("world-map-equirectangular-projection-1000.png"),
                 outputFile.createFileAndDirectoryIfNotExists(),
-                1 / 20.0)
-
-        return true
+                1 / 100.0)
     }
 }
