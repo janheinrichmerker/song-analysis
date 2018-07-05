@@ -167,7 +167,7 @@ aka. we find the most common words for each genre
 
 ### Where do the artists with the hotttest songs live?
 
-**TODO**
+**TODO**: 375 artists with known location
 
 ### Where do the most familiar artists live?
 
