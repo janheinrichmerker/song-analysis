@@ -47,4 +47,24 @@ abstract class PairWritable<A : WritableComparable<in A>, B : WritableComparable
      * Returns string representation of the [PairWritable] including its [first] and [second] values.
      */
     override fun toString(): String = "($first, $second)"
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is PairWritable<*, *>) return false
+
+        if (first != other.first) return false
+        if (second != other.second) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = first.hashCode()
+        result = 31 * result + second.hashCode()
+        return result
+    }
+
+    operator fun component0(): A = first
+
+    operator fun component1(): B = second
 }
