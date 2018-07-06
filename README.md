@@ -26,7 +26,3 @@ add the following line to `lib/hadoop/hadoop-3.1.0/etc/hadoop/hadoop-env.sh`:
 ```bash
 HADOOP_ROOT_LOGGER=WARN,DRFA
 ```
-
-## Questions
-  
-*TODO:* List specific questions.
