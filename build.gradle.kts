@@ -6,6 +6,7 @@ import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.kot
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.versions
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.paths
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.tasks.HadoopCopyToFileSystemTask
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.tasks.DrawArtistLocationHeatmapTask
 
 plugins {
     kotlin("jvm") version "1.2.50"
@@ -96,7 +97,7 @@ tasks {
         inputPath = File(project.rootDir, "data/songs/B")
         outputPath = File(project.rootDir, "out/analytics")
     }
-    analyseArtistDanceability.dependsOn(shadowJar)
+    analyseArtistFamiliarity.dependsOn(shadowJar)
 
     val analyseYearDominantGenre by creating(HadoopAnalyseTask::class) {
         tool = "analyse-year-dominant-genre"
@@ -112,18 +113,16 @@ tasks {
     }
     analyseYearGenres.dependsOn(shadowJar)
 
-    val drawSongHotttnessArtistLocationHeatmap by creating(JavaExec::class) {
-        group = "Visualize"
-        description = "Draws a heatmap of values based on the artist's location."
+    val drawSongHotttnesssArtistLocationHeatmap by creating(DrawArtistLocationHeatmapTask::class) {
+        description = "Draws a heatmap of song hotttness based on the artist's location."
 
-        val input = File(project.rootDir, "results/average-song-hotttness-by-artist-B.tsv")
-        val output = File(project.rootDir, "out/images/$name.png")
+        input = File(project.rootDir, "results/average-song-hotttnesss-by-artist-B.tsv")
+    }
 
-        classpath = java.sourceSets["main"].runtimeClasspath
-        main = "${project.group}.DrawArtistValuesLocationHeatmap"
-        args = listOf(input.path, output.path)
+    val drawFamiliarityArtistLocationHeatmap by creating(DrawArtistLocationHeatmapTask::class) {
+        description = "Draws a heatmap of familiarity based on the artist's location."
 
-        outputs.file(output)
+        input = File(project.rootDir, "results/average-familiarity-by-artist-B.tsv")
     }
 
 }

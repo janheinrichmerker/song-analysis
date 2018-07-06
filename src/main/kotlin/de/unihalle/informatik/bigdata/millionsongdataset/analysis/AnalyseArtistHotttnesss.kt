@@ -2,25 +2,24 @@ package de.unihalle.informatik.bigdata.millionsongdataset.analysis
 
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.extensions.hadoop.*
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.hadoop.IoTool
-import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.map.MapArtistSongHotttness
+import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.map.MapArtistSongHotttnesss
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.reader.hdf5.Hdf5SongFileInputFormat
 import de.unihalle.informatik.bigdata.millionsongdataset.analysis.mapreduce.reduce.ReduceDoubleMean
-import de.unihalle.informatik.bigdata.songs.extensions.containingJar
 import org.apache.hadoop.io.DoubleWritable
 import org.apache.hadoop.io.Text
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat
 
-object AnalyseArtistHotttness : IoTool() {
+object AnalyseArtistHotttnesss : IoTool() {
 
     override fun onRun(arguments: Array<String>): Boolean {
         println("Analysing '$inputFileName'. (Outputs will be saved to '$outputFileName'.)")
 
         return jobOf(configuration) {
-            jar = AnalyseArtistHotttness::class.containingJar
+            jar = containingJar
             inputPathName = inputFileName
             inputDirRecursively = true
             inputFormatKClass = Hdf5SongFileInputFormat::class
-            mapperKClass = MapArtistSongHotttness::class
+            mapperKClass = MapArtistSongHotttnesss::class
             reducerKClass = ReduceDoubleMean::class
             outputKeyKClass = Text::class
             outputValueKClass = DoubleWritable::class

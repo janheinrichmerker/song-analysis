@@ -13,13 +13,14 @@ object Analyse {
 
         val tool = SelectableTool {
             when (it) {
-                "analyse-artist-hotttness" -> AnalyseArtistHotttness
+                "analyse-artist-hotttnesss",
+                "analyse-artist-hotttness" -> AnalyseArtistHotttnesss
                 "analyse-artist-danceability" -> AnalyseArtistDanceability
                 "analyse-artist-familiarity" -> AnalyseArtistFamiliarity
                 "analyse-genre-word-count" -> AnalyseGenreWordCount
                 "analyse-year-dominant-genre" -> AnalyseYearDominantGenre
                 "analyse-year-genres" -> AnalyseYearGenres
-                else -> AnalyseArtistHotttness
+                else -> throw IllegalArgumentException("No tool selected.")
             }
         }
         tool.configuration = Configuration()
