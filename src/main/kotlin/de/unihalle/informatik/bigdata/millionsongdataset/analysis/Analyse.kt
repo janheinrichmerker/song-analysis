@@ -15,6 +15,7 @@ object Analyse {
             when (it) {
                 "analyse-artist-hotttness" -> AnalyseArtistHotttness
                 "analyse-artist-danceability" -> AnalyseArtistDanceability
+                "analyse-artist-familiarity" -> AnalyseArtistFamiliarity
                 "analyse-genre-word-count" -> AnalyseGenreWordCount
                 "analyse-year-dominant-genre" -> AnalyseYearDominantGenre
                 "analyse-year-genres" -> AnalyseYearGenres

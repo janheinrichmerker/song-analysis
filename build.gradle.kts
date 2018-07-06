@@ -91,6 +91,13 @@ tasks {
     }
     analyseArtistDanceability.dependsOn(shadowJar)
 
+    val analyseArtistFamiliarity by creating(HadoopAnalyseTask::class) {
+        tool = "analyse-artist-familiarity"
+        inputPath = File(project.rootDir, "data/songs/B")
+        outputPath = File(project.rootDir, "out/analytics")
+    }
+    analyseArtistDanceability.dependsOn(shadowJar)
+
     val analyseYearDominantGenre by creating(HadoopAnalyseTask::class) {
         tool = "analyse-year-dominant-genre"
         inputPath = File(project.rootDir, "data/songs/B")
