@@ -5,7 +5,7 @@ import de.unihalle.informatik.bigdata.millionsongdataset.analysis.lookup.LyricsL
 import java.io.File
 import java.util.*
 
-object LyricsTest {
+object SizeTest {
     @JvmStatic
     fun main(args: Array<String>) {
         val trackIds = File("data/songs")
