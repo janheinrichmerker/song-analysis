@@ -15,17 +15,33 @@ inline fun <InputElementType, ReturnKeyType, ReturnValueType> Iterable<InputElem
     return destination
 }
 
-fun <ElementType : Comparable<ElementType>> Iterable<ElementType>.getDominantElement(): ElementType {
+/**
+ * Counts distinct elements of this collection.
+ */
+fun <ElementType> Iterable<ElementType>.countDistinct(): Map<ElementType, Int> {
     val buckets = mutableMapOf<ElementType, Int>()
     forEach { buckets.increment(it) }
-    return buckets.maxBy { it.value }!!.key
+    return buckets
 }
 
-fun <ElementType : Comparable<ElementType>> Iterable<ElementType>.getDominantElementOrNull(): ElementType? {
-    val buckets = mutableMapOf<ElementType, Int>()
-    forEach { buckets.increment(it) }
-    return buckets.maxBy { it.value }?.key
+/**
+ * Counts distinct elements of this collection.
+ */
+fun <ElementType, SelectorType> Iterable<ElementType>.countDistinctBy(
+        selector: (ElementType) -> SelectorType): Map<ElementType, Int> {
+    val selectors = mapToMap { selector(it) to it }
+    return selectors.keys
+            .countDistinct()
+            .mapKeys { (selector, _) ->
+                selectors.getValue(selector)
+            }
 }
+
+fun <ElementType : Comparable<ElementType>> Iterable<ElementType>.getDominantElement() =
+        countDistinct().maxBy { it.value }!!.key
+
+fun <ElementType : Comparable<ElementType>> Iterable<ElementType>.getDominantElementOrNull() =
+        countDistinct().maxBy { it.value }?.key
 
 fun <KeyType> MutableMap<KeyType, Int>.increment(key: KeyType, increment: Int = 1, default: Int = 0) {
     compute(key) { _, value ->
