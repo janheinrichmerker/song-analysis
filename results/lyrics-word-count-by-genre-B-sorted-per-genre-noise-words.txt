@@ -1,0 +1,97 @@
+#########################################################
+# List of ignored words for lyrics                      #
+#########################################################
+# 1. Mainly filling words and foreign words are ignored.#
+# 2. Genres that had no word left after filtering,      #
+#    that occured 30 times or more are ignored too:     #
+#    - International                                    #
+#    - Latin                                            #
+#    - Jazz                                             #
+#    - Folk                                             #
+#    - Blues                                            #
+#########################################################
+i
+a
+the
+it
+is
+&
+y
+el
+to
+in
+on
+hey
+you
+have
+not
+so
+me
+my
+of
+and
+la
+de
+que
+no
+are
+do
+we
+am
+that
+your
+but
+was
+this
+be
+ich
+und
+for
+if
+an
+mi
+se
+e
+te
+ella
+es
+en
+o
+su
+her
+he
+she
+tu
+con
+será
+por
+não
+had
+been
+will
+s
+t
+all
+oh
+esta
+denk
+dem
+with
+got
+would
+get
+un
+aqui
+muy
+ca
+whi
+they
+nicht
+ihr
+estou
+mil
+just
+let
+sie
+could
+michael
