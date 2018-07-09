@@ -1,0 +1,688 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{bertin2012field}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=51cf2fed0b4b3042100ea32d9ce3c41e}{%
+           family={Bertin-Mahieux},
+           familyi={B\bibinithyphendelim M\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{fullhash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{bibnamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authorbibnamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authornamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authorfullhash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-06}
+      \field{title}{Field list - {Million Song Dataset}}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://labrosa.ee.columbia.edu/millionsong/pages/field-list
+      \endverb
+      \verb{url}
+      \verb https://labrosa.ee.columbia.edu/millionsong/pages/field-list
+      \endverb
+    \endentry
+    \entry{bertin2012million}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=51cf2fed0b4b3042100ea32d9ce3c41e}{%
+           family={Bertin-Mahieux},
+           familyi={B\bibinithyphendelim M\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{fullhash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{bibnamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authorbibnamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authornamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authorfullhash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-06}
+      \field{title}{{Million Song Dataset}, official website}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://labrosa.ee.columbia.edu/millionsong/
+      \endverb
+      \verb{url}
+      \verb https://labrosa.ee.columbia.edu/millionsong/
+      \endverb
+    \endentry
+    \entry{bertin2012lastfm}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=51cf2fed0b4b3042100ea32d9ce3c41e}{%
+           family={Bertin-Mahieux},
+           familyi={B\bibinithyphendelim M\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{fullhash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{bibnamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authorbibnamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authornamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authorfullhash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{{The Last.fm Dataset} - {Million Song Dataset}}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://labrosa.ee.columbia.edu/millionsong/lastfm
+      \endverb
+      \verb{url}
+      \verb https://labrosa.ee.columbia.edu/millionsong/lastfm
+      \endverb
+    \endentry
+    \entry{bertin2012musixmatch}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=51cf2fed0b4b3042100ea32d9ce3c41e}{%
+           family={Bertin-Mahieux},
+           familyi={B\bibinithyphendelim M\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{fullhash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{bibnamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authorbibnamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authornamehash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \strng{authorfullhash}{51cf2fed0b4b3042100ea32d9ce3c41e}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradate}{4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{{The musiXmatch Dataset} - {Million Song Dataset}}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://labrosa.ee.columbia.edu/millionsong/musixmatch
+      \endverb
+      \verb{url}
+      \verb https://labrosa.ee.columbia.edu/millionsong/musixmatch
+      \endverb
+    \endentry
+    \entry{bertin2011million}{inproceedings}{}
+      \name{author}{4}{uniquelist=1}{%
+        {{uniquename=0,uniquepart=base,hash=51cf2fed0b4b3042100ea32d9ce3c41e}{%
+           family={Bertin-Mahieux},
+           familyi={B\bibinithyphendelim M\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8ce8c1d3e3b0ced457c43d33653fc9f6}{%
+           family={Ellis},
+           familyi={E\bibinitperiod},
+           given={Daniel\bibnamedelima P.W.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=dac20e999e2524cfd5b5885d028f57b5}{%
+           family={Whitman},
+           familyi={W\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9a3c53fbc0e29f2c2a3ffcbcdf37b3ed}{%
+           family={Lamere},
+           familyi={L\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b17193a0be72405486e91668e6a09e24}
+      \strng{fullhash}{47a596d546ac535c7c3e11d1b4fc7bbc}
+      \strng{bibnamehash}{b17193a0be72405486e91668e6a09e24}
+      \strng{authorbibnamehash}{b17193a0be72405486e91668e6a09e24}
+      \strng{authornamehash}{b17193a0be72405486e91668e6a09e24}
+      \strng{authorfullhash}{47a596d546ac535c7c3e11d1b4fc7bbc}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 12th International Society for Music Information Retrieval Conference (ISMIR 2011)}
+      \field{title}{{The Million Song Dataset}}
+      \field{year}{2011}
+      \field{pages}{591\bibrangedash 596}
+      \range{pages}{6}
+    \endentry
+    \entry{gaba2008tissot}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c7b0e8b8a6538cf3583bd41e73d55950}{%
+           family={Gaba},
+           familyi={G\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=1f1180463cfdbaff262c594169a30fac}{%
+           family={{Wikimedia Commons, the free media repository}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{c7b0e8b8a6538cf3583bd41e73d55950}
+      \strng{fullhash}{c7b0e8b8a6538cf3583bd41e73d55950}
+      \strng{bibnamehash}{c7b0e8b8a6538cf3583bd41e73d55950}
+      \strng{authorbibnamehash}{c7b0e8b8a6538cf3583bd41e73d55950}
+      \strng{authornamehash}{c7b0e8b8a6538cf3583bd41e73d55950}
+      \strng{authorfullhash}{c7b0e8b8a6538cf3583bd41e73d55950}
+      \strng{editorbibnamehash}{1f1180463cfdbaff262c594169a30fac}
+      \strng{editornamehash}{1f1180463cfdbaff262c594169a30fac}
+      \strng{editorfullhash}{1f1180463cfdbaff262c594169a30fac}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-07}
+      \field{title}{Map of the world in an equirectangular projection with Tissot's Indicatrix of deformation.}
+      \field{year}{2008}
+      \verb{urlraw}
+      \verb https://commons.wikimedia.org/w/index.php?title=File:Tissot_indicatrix_world_map_equirectangular_proj.svg&oldid=203837838
+      \endverb
+      \verb{url}
+      \verb https://commons.wikimedia.org/w/index.php?title=File:Tissot_indicatrix_world_map_equirectangular_proj.svg&oldid=203837838
+      \endverb
+    \endentry
+    \entry{harper2013nashville}{book}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=24004f98f4388991d1252ec8572b9883}{%
+           family={Harper},
+           familyi={H\bibinitperiod},
+           given={Garrett},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=919ac2541d1ade1ea84e4dc165d6cfa8}{%
+           family={Cotton},
+           familyi={C\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6587d23f4a8f7b2596b4b72e09586740}{%
+           family={Benefield},
+           familyi={B\bibinitperiod},
+           given={Zandra},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{09d79859024f62942177c751e9a8c2cf}
+      \strng{fullhash}{09d79859024f62942177c751e9a8c2cf}
+      \strng{bibnamehash}{09d79859024f62942177c751e9a8c2cf}
+      \strng{authorbibnamehash}{09d79859024f62942177c751e9a8c2cf}
+      \strng{authornamehash}{09d79859024f62942177c751e9a8c2cf}
+      \strng{authorfullhash}{09d79859024f62942177c751e9a8c2cf}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{subtitle}{Impact, Contribution and Cluster Analysis}
+      \field{title}{Nashville Music Industry}
+      \field{year}{2013}
+    \endentry
+    \entry{jetbrains2018kotlin}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=f84bd4b4caa44b11103f3eba38223a9c}{%
+           family={{Jetbrains}},
+           familyi={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{f84bd4b4caa44b11103f3eba38223a9c}
+      \strng{fullhash}{f84bd4b4caa44b11103f3eba38223a9c}
+      \strng{bibnamehash}{f84bd4b4caa44b11103f3eba38223a9c}
+      \strng{authorbibnamehash}{f84bd4b4caa44b11103f3eba38223a9c}
+      \strng{authornamehash}{f84bd4b4caa44b11103f3eba38223a9c}
+      \strng{authorfullhash}{f84bd4b4caa44b11103f3eba38223a9c}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{Kotlin Programming Language}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://kotlinlang.org/
+      \endverb
+      \verb{url}
+      \verb https://kotlinlang.org/
+      \endverb
+    \endentry
+    \entry{lamere2018hottt}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9a3c53fbc0e29f2c2a3ffcbcdf37b3ed}{%
+           family={Lamere},
+           familyi={L\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9a3c53fbc0e29f2c2a3ffcbcdf37b3ed}
+      \strng{fullhash}{9a3c53fbc0e29f2c2a3ffcbcdf37b3ed}
+      \strng{bibnamehash}{9a3c53fbc0e29f2c2a3ffcbcdf37b3ed}
+      \strng{authorbibnamehash}{9a3c53fbc0e29f2c2a3ffcbcdf37b3ed}
+      \strng{authornamehash}{9a3c53fbc0e29f2c2a3ffcbcdf37b3ed}
+      \strng{authorfullhash}{9a3c53fbc0e29f2c2a3ffcbcdf37b3ed}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{Hottt or Nottt?}
+      \field{year}{2009}
+      \verb{urlraw}
+      \verb https://musicmachinery.com/2009/12/09/a-rising-star-or/
+      \endverb
+      \verb{url}
+      \verb https://musicmachinery.com/2009/12/09/a-rising-star-or/
+      \endverb
+    \endentry
+    \entry{musixmatch2018about}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=409f30946d430d0e6f747e94af6b45c2}{%
+           family={{Musixmatch}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{409f30946d430d0e6f747e94af6b45c2}
+      \strng{fullhash}{409f30946d430d0e6f747e94af6b45c2}
+      \strng{bibnamehash}{409f30946d430d0e6f747e94af6b45c2}
+      \strng{authorbibnamehash}{409f30946d430d0e6f747e94af6b45c2}
+      \strng{authornamehash}{409f30946d430d0e6f747e94af6b45c2}
+      \strng{authorfullhash}{409f30946d430d0e6f747e94af6b45c2}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{About}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://about.musixmatch.com/
+      \endverb
+      \verb{url}
+      \verb https://about.musixmatch.com/
+      \endverb
+    \endentry
+    \entry{nyc2018mayor}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=54ed4cf3adb05dd63ea5f2bcf7881c3a}{%
+           family={{NYC \& Company, Inc.}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{54ed4cf3adb05dd63ea5f2bcf7881c3a}
+      \strng{fullhash}{54ed4cf3adb05dd63ea5f2bcf7881c3a}
+      \strng{bibnamehash}{54ed4cf3adb05dd63ea5f2bcf7881c3a}
+      \strng{authorbibnamehash}{54ed4cf3adb05dd63ea5f2bcf7881c3a}
+      \strng{authornamehash}{54ed4cf3adb05dd63ea5f2bcf7881c3a}
+      \strng{authorfullhash}{54ed4cf3adb05dd63ea5f2bcf7881c3a}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{Mayor de Blasio and NYC \& Company Announce New York City Welcomed Record 62.8 Million Visitors in 2017}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www1.nyc.gov/office-of-the-mayor/news/146-18/mayor-de-blasio-nyc-company-new-york-city-welcomed-record-62-8-million-visitors-in
+      \endverb
+      \verb{url}
+      \verb https://www1.nyc.gov/office-of-the-mayor/news/146-18/mayor-de-blasio-nyc-company-new-york-city-welcomed-record-62-8-million-visitors-in
+      \endverb
+    \endentry
+    \entry{pew2015global}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=a23efa785ab9ff66db355bb66f385934}{%
+           family={{Pew Research Center}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{a23efa785ab9ff66db355bb66f385934}
+      \strng{fullhash}{a23efa785ab9ff66db355bb66f385934}
+      \strng{bibnamehash}{a23efa785ab9ff66db355bb66f385934}
+      \strng{authorbibnamehash}{a23efa785ab9ff66db355bb66f385934}
+      \strng{authornamehash}{a23efa785ab9ff66db355bb66f385934}
+      \strng{authorfullhash}{a23efa785ab9ff66db355bb66f385934}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{subtitle}{Half of the Most Religiously Diverse Countries are in Asia-Pacific Region}
+      \field{title}{Global Religious Diversity}
+      \field{year}{2014}
+      \verb{urlraw}
+      \verb https://commons.wikimedia.org/w/index.php?title=File:Tissot_indicatrix_world_map_equirectangular_proj.svg&oldid=203837838
+      \endverb
+      \verb{url}
+      \verb https://commons.wikimedia.org/w/index.php?title=File:Tissot_indicatrix_world_map_equirectangular_proj.svg&oldid=203837838
+      \endverb
+    \endentry
+    \entry{ranker2018london}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ddef5679e1cb4486958d659779413175}{%
+           family={{Ranker, Inc.}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{ddef5679e1cb4486958d659779413175}
+      \strng{fullhash}{ddef5679e1cb4486958d659779413175}
+      \strng{bibnamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authorbibnamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authornamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authorfullhash}{ddef5679e1cb4486958d659779413175}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{List of Famous Bands from London}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.ranker.com/list/london-bands-and-musical-artists-from-here/reference
+      \endverb
+      \verb{url}
+      \verb https://www.ranker.com/list/london-bands-and-musical-artists-from-here/reference
+      \endverb
+    \endentry
+    \entry{ranker2018la}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ddef5679e1cb4486958d659779413175}{%
+           family={{Ranker, Inc.}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{ddef5679e1cb4486958d659779413175}
+      \strng{fullhash}{ddef5679e1cb4486958d659779413175}
+      \strng{bibnamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authorbibnamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authornamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authorfullhash}{ddef5679e1cb4486958d659779413175}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{List of Famous Bands from Los Angeles}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.ranker.com/list/los-angeles-bands-and-musical-artists-from-here/reference
+      \endverb
+      \verb{url}
+      \verb https://www.ranker.com/list/los-angeles-bands-and-musical-artists-from-here/reference
+      \endverb
+    \endentry
+    \entry{ranker2018nashville}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ddef5679e1cb4486958d659779413175}{%
+           family={{Ranker, Inc.}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{ddef5679e1cb4486958d659779413175}
+      \strng{fullhash}{ddef5679e1cb4486958d659779413175}
+      \strng{bibnamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authorbibnamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authornamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authorfullhash}{ddef5679e1cb4486958d659779413175}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{List of Famous Bands from Nashville}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.ranker.com/list/nashville-bands-and-musical-artists-from-here/reference
+      \endverb
+      \verb{url}
+      \verb https://www.ranker.com/list/nashville-bands-and-musical-artists-from-here/reference
+      \endverb
+    \endentry
+    \entry{ranker2018ny}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ddef5679e1cb4486958d659779413175}{%
+           family={{Ranker, Inc.}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{ddef5679e1cb4486958d659779413175}
+      \strng{fullhash}{ddef5679e1cb4486958d659779413175}
+      \strng{bibnamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authorbibnamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authornamehash}{ddef5679e1cb4486958d659779413175}
+      \strng{authorfullhash}{ddef5679e1cb4486958d659779413175}
+      \field{sortinit}{R}
+      \field{sortinithash}{da6b42bd3ab22fee61abed031ee405f7}
+      \field{extradate}{4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{List of Famous Bands from New York}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.ranker.com/list/new-york-bands-and-musical-artists-from-here/reference
+      \endverb
+      \verb{url}
+      \verb https://www.ranker.com/list/new-york-bands-and-musical-artists-from-here/reference
+      \endverb
+    \endentry
+    \entry{schindler2012facilitating}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=b6aa0f257533a86434229f72729aa800}{%
+           family={Schindler},
+           familyi={S\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=efa76330e1f8ff8f2b655877c20caa6b}{%
+           family={Mayer},
+           familyi={M\bibinitperiod},
+           given={Rudolf},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=66733b4fcd6699926ffaae081c654825}{%
+           family={Rauber},
+           familyi={R\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{789bb7db5f66afb30f58f27a5ff6c712}
+      \strng{fullhash}{789bb7db5f66afb30f58f27a5ff6c712}
+      \strng{bibnamehash}{789bb7db5f66afb30f58f27a5ff6c712}
+      \strng{authorbibnamehash}{789bb7db5f66afb30f58f27a5ff6c712}
+      \strng{authornamehash}{789bb7db5f66afb30f58f27a5ff6c712}
+      \strng{authorfullhash}{789bb7db5f66afb30f58f27a5ff6c712}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 13th International Society for Music Information Retrieval Conference (ISMIR 2012)}
+      \field{title}{Facilitating Comprehensive Benchmarking Experiments on the Million Song Dataset.}
+      \field{year}{2012}
+      \field{pages}{469\bibrangedash 474}
+      \range{pages}{6}
+    \endentry
+    \entry{schreiber2015improving}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=5cc69a37649f2b226d809986f29c706d}{%
+           family={Schreiber},
+           familyi={S\bibinitperiod},
+           given={Hendrik},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5cc69a37649f2b226d809986f29c706d}
+      \strng{fullhash}{5cc69a37649f2b226d809986f29c706d}
+      \strng{bibnamehash}{5cc69a37649f2b226d809986f29c706d}
+      \strng{authorbibnamehash}{5cc69a37649f2b226d809986f29c706d}
+      \strng{authornamehash}{5cc69a37649f2b226d809986f29c706d}
+      \strng{authorfullhash}{5cc69a37649f2b226d809986f29c706d}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 16th International Society for Music Information Retrieval Conference (ISMIR 2015)}
+      \field{title}{Improving Genre Annotations for the {Million Song Dataset}.}
+      \field{year}{2015}
+      \field{pages}{241\bibrangedash 247}
+      \range{pages}{7}
+    \endentry
+    \entry{schreiber2015tagtraum}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=5cc69a37649f2b226d809986f29c706d}{%
+           family={Schreiber},
+           familyi={S\bibinitperiod},
+           given={Hendrik},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5cc69a37649f2b226d809986f29c706d}
+      \strng{fullhash}{5cc69a37649f2b226d809986f29c706d}
+      \strng{bibnamehash}{5cc69a37649f2b226d809986f29c706d}
+      \strng{authorbibnamehash}{5cc69a37649f2b226d809986f29c706d}
+      \strng{authornamehash}{5cc69a37649f2b226d809986f29c706d}
+      \strng{authorfullhash}{5cc69a37649f2b226d809986f29c706d}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-06}
+      \field{title}{tagtraum genre annotations for the {Million Song Dataset}}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb http://www.tagtraum.com/msd_genre_datasets.html
+      \endverb
+      \verb{url}
+      \verb http://www.tagtraum.com/msd_genre_datasets.html
+      \endverb
+    \endentry
+    \entry{apache2018hadoop}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=591fd05c2b7efba60bf8751a931f7c94}{%
+           family={{The Apache Software Foundation}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{591fd05c2b7efba60bf8751a931f7c94}
+      \strng{fullhash}{591fd05c2b7efba60bf8751a931f7c94}
+      \strng{bibnamehash}{591fd05c2b7efba60bf8751a931f7c94}
+      \strng{authorbibnamehash}{591fd05c2b7efba60bf8751a931f7c94}
+      \strng{authornamehash}{591fd05c2b7efba60bf8751a931f7c94}
+      \strng{authorfullhash}{591fd05c2b7efba60bf8751a931f7c94}
+      \field{sortinit}{T}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-08}
+      \field{title}{{Apache™ Hadoop®}}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://hadoop.apache.org/
+      \endverb
+      \verb{url}
+      \verb https://hadoop.apache.org/
+      \endverb
+    \endentry
+    \entry{hdfgroup2018hdf5}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=85c95ce9c0a6fb9da3ebfe7fc59389f2}{%
+           family={{The HDF Group}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{85c95ce9c0a6fb9da3ebfe7fc59389f2}
+      \strng{fullhash}{85c95ce9c0a6fb9da3ebfe7fc59389f2}
+      \strng{bibnamehash}{85c95ce9c0a6fb9da3ebfe7fc59389f2}
+      \strng{authorbibnamehash}{85c95ce9c0a6fb9da3ebfe7fc59389f2}
+      \strng{authornamehash}{85c95ce9c0a6fb9da3ebfe7fc59389f2}
+      \strng{authorfullhash}{85c95ce9c0a6fb9da3ebfe7fc59389f2}
+      \field{sortinit}{T}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2018-07-06}
+      \field{title}{{HDF5}}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://support.hdfgroup.org/HDF5/
+      \endverb
+      \verb{url}
+      \verb https://support.hdfgroup.org/HDF5/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
