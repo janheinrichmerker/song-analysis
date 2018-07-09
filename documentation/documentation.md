@@ -153,7 +153,7 @@ A custom Hadoop `InputFormat` and a serializable `Song` class had to be written 
 Additionally parsing HDF5 files in Java requires the use of a native library, though including native libraries in Hadoop is difficult, because normally each Hadoop data node is running on a separate physical machine, thus one needs to configure the native library on each node.
 Writing custom wrappers around the Hadoop analyze tool and using Hadoop file system's shared cache it was possible to bypass this problem.
 
-Running Hadoop on a single-node cluster of course is not using Hadoop's full potential. Though, as there was no multi-node cluster available at the time of writing, this project was limited to a single-node cluster.
+Running Hadoop on a single-node cluster of course is not using Hadoop's full potential. Though, as there was no multi-node cluster available to the authors at the time of writing, this project was limited to a single-node cluster.
 For each analyzed input file Hadoop creates a mapper. Although a mapper can process multiple splits (regions) of a file, the custom input format made for HDF5 songs doesn't support splits - neither does the underlying HDF5 library. Consequently Hadoop would have to create 1 000 000 mappers (10 000 for the subset) which of course overflows the RAM of most consumer hardware.
 Therefore only parts of the subset, the `B` sub-folder, were analyzed.
 
@@ -167,9 +167,13 @@ aka. we find the most common words for each genre
 
 ### Where do the artists with the hotttest songs live?
 
-**TODO**: 375 artists with known location
+![Familiarity heatmap](https://raw.githubusercontent.com/heinrichreimer/song-analysis/master/results/average-song-hotttnesss-by-artist-B.png)
+
+**TODO**
 
 ### Where do the most familiar artists live?
+
+![Familiarity heatmap](https://raw.githubusercontent.com/heinrichreimer/song-analysis/master/results/average-familiarity-by-artist-B.png)
 
 **TODO**
 
@@ -177,7 +181,7 @@ aka. we find the most common words for each genre
 
 **TODO**
 
-### In which year the most were released?
+### In which year the most songs were released?
 
 **TODO**
 
@@ -192,6 +196,11 @@ aka. we find the most common words for each genre
 Analyzing just a small subset of [**TODO**: Count files in `B` sub-folder.] songs...
 
 **TODO**: Whats impacts has analyzing more data?
+
+### Source code
+
+The source code for running this analyzes can be found publicly on the following GitHub repository: https://github.com/heinrichreimer/song-analysis
+Read the repository's read-me for a brief description on how to install and run the scripts.
 
 ## References
 
